@@ -1,3 +1,3 @@
-FishRun
+FishRun 開発版
 
 サメから逃げるゲームです。
