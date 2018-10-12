@@ -21,17 +21,12 @@ public class playerColor : MonoBehaviour {
             case 1: Push(); break;
             case 2: Push2(); break;
         }
-
-        //color.r = 1.0f - (pushCount.x / 10.0f);
-        //color.g = 1.0f - (pushCount.y / 10.0f);
-        //color.b = 1.0f - (pushCount.z / 10.0f);
         color.r = (pushCount.x / 10.0f);
-        color.g =  (pushCount.y / 10.0f);
+        color.g = (pushCount.y / 10.0f);
         color.b = (pushCount.z / 10.0f);
-
-        Debug.Log(color);
+        
         gameObject.GetComponent<SpriteRenderer>().color = new Color(
-          color.r, color.g, color.b);
+         color.r, color.g, color.b);     
     }
 
     void Push()
