@@ -7,31 +7,29 @@ public class targetThemeColor : MonoBehaviour {
 
     private Text target;
     public GameObject gameObj;
-    public colorSelect colorSelect;
+    public monitaData monita;
     public string colorName = "non";
- 
+    
     // Use this for initialization
     void Start () {
-       // gameObj = GameObject.FindGameObjectWithTag("theme");
-        colorSelect = gameObj.GetComponent<colorSelect>();
-
+        monita = gameObj.GetComponent<monitaData>();
         target = this.GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        //switch (colorName)
-        //{
-        //    case "red":
-        //        target.text = (colorSelect.GetColorData().x).ToString();
-        //        break;
-        //    case "blue":
-        //        target.text = (colorSelect.GetColorData().y).ToString();
-        //        break;
-        //    case "yellow":
-        //        target.text = (colorSelect.GetColorData().z).ToString();
-        //        break;
-        //}
+        switch (colorName)
+        {
+            case "red":
+                target.text = (monita.GetColorData().x).ToString();
+                break;
+            case "blue":
+                target.text = (monita.GetColorData().y).ToString();
+                break;
+            case "yellow":
+                target.text = (monita.GetColorData().z).ToString();
+                break;
+        }
     }
 }

@@ -7,7 +7,7 @@ public class CreateColor : MonoBehaviour {
     public GameObject prefab;
     private CountDown countDown;
     bool oneFlag = false;
-    float time;
+    public monitaData data;
     enum State
     {
         Non,
@@ -18,7 +18,6 @@ public class CreateColor : MonoBehaviour {
 	void Start () {
         countDown = gameObject.GetComponent<CountDown>();
         state = State.Non;
-        time = 0.0f;
 	}
 	
 	// Update is called once per frame
@@ -38,9 +37,9 @@ public class CreateColor : MonoBehaviour {
             case State.Create:
                 if(countDown.GetCurrentTime() == -1)
                 {
-                    GameObject obj = Instantiate(prefab, new Vector3(0, 2.5f, 0), Quaternion.identity);
+                   // GameObject obj = Instantiate(prefab, new Vector3(0, 2.5f, 0), Quaternion.identity);
                     //ここで、設定した色情報を取得する
-
+                   // obj.GetComponent<colorSelect>().SetColorData(data.GetColorData());
                     state = State.Non;
                 }
                 break;

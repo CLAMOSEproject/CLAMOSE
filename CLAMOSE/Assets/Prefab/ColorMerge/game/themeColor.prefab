@@ -52,7 +52,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f01edeeba26b9c4d8d4e743a998d63e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  designatePushNum: 3
 --- !u!212 &212262847471202762
 SpriteRenderer:
   m_ObjectHideFlags: 1

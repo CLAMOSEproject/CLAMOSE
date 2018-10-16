@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class monitaData : MonoBehaviour {
 
-
     private Vector3 colorData;
 	// Use this for initialization
 	void Start () {
@@ -13,7 +12,7 @@ public class monitaData : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+       
 	}
 
     public void SetColorData(Vector3 colorData)

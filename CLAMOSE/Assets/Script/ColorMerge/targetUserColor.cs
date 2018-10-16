@@ -10,16 +10,17 @@ public class targetUserColor : MonoBehaviour {
     playerColor color;
     public string colorName = "non";
     public int playerNumber;
+
+
 	// Use this for initialization
 	void Start () {
         gameObj = GameObject.Find("color" + playerNumber.ToString());
-        color = gameObj.GetComponent<playerColor>();
-
         target = this.GetComponent<Text>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        color = gameObj.GetComponent<playerColor>();
         switch (colorName)
         {
             case "red":
