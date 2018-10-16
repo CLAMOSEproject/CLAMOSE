@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class BattryRateText : MonoBehaviour {
 
-    public Sprite[] mathFont = new Sprite[10];
+    public Sprite[] mathFont = new Sprite[11];
     public BatteryCharge batteryRate;
     public int magicNumber;
 
-    private Sprite Mathsprite;
-    private Image  image;
-	// Use this for initialization
-	void Start ()
+    private Sprite    Mathsprite;
+    private Image     image;
+
+    public  bool      percent;
+    // Use this for initialization
+    void Start ()
     {
         this.Mathsprite = GetComponent<Image>().sprite;
         this.image = GetComponent<Image>();
@@ -21,18 +23,32 @@ public class BattryRateText : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        this.Mathsprite = this.MagicNumberfromSelectMathFont();
-        this.image.sprite = this.Mathsprite;
+        //sprite表示
+        if(!this.percent)
+        {
+            this.Mathsprite = this.MagicNumberfromSelectMathFont();
+            this.image.sprite = this.Mathsprite;
+        }
+        else
+        {
+            this.Mathsprite = this.mathFont[10];
+        }
     }
 
     Sprite MagicNumberfromSelectMathFont()
     {
         string digit = this.batteryRate.getbatteryRate().ToString();
-        Debug.Log(digit);
-        int spriteNumber = int.Parse(digit.Substring(this.magicNumber));
-        if(int.Parse(digit.Substring(this.magicNumber)) >= 11)
+        //バッテリー率のデータ取得
+
+        short spriteNumber = 0;
+        if(this.magicNumber <= digit.Length)
         {
-            Debug.Log("アウト");
+            this.image.enabled = true;
+            spriteNumber = short.Parse(digit.Substring(digit.Length - this.magicNumber, 1));
+        }
+        else
+        {
+            this.image.enabled = false;
         }
         return this.mathFont[spriteNumber];
     }

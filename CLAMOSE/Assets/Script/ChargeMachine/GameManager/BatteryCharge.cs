@@ -20,11 +20,12 @@ public class BatteryCharge : MonoBehaviour
     //何もボタン押していないバッテリーの減算率
     public float  keyupbatteryRate;
 
-
 //オーバーチャージ中
 
     //ボタンを押していない時間
     private float nonbuttoninputCount;
+
+    private User  user;
 
     // Use this for initialization
     void Start()
@@ -35,6 +36,7 @@ public class BatteryCharge : MonoBehaviour
         this.overCharge = GetComponent<OverCharge>();
         this.keyUpCount = 0;
         this.nonbuttoninputCount = 0;
+        this.user = GetComponent<User>();
     }
 
     // Update is called once per frame
@@ -97,7 +99,14 @@ public class BatteryCharge : MonoBehaviour
     //ボタンの判定
     bool ButtonInputCheck()
     {
-        return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.B);
+        switch(this.user.getPlayer().ToString())
+        {
+           case "Player1":
+                return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.B);
+           case "Player2":
+                return Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.J);
+        }
+        return false;
     }
 
     int ButtonInputCount()
