@@ -21,6 +21,7 @@ public class MoveCamera : MonoBehaviour
         newz *= root3;       
         center += lp;        
         center.z -= newz ;
+        center.x += 5;
         
         //位置更新
         this.transform.position = center;

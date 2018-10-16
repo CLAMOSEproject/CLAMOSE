@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameStart : MonoBehaviour
 {
     public GameObject bfl, bfr, sfl, sfr;
+    public GameObject Goal;
     public GameObject PL, PR;
 
 	// Use this for initialization
@@ -20,6 +21,9 @@ public class GameStart : MonoBehaviour
             PL.transform.SetParent(Instantiate(bfr).transform);
             //右プレイヤは小さい魚            
             PR.transform.SetParent(Instantiate(sfr).transform);
+            //ゴール生成
+            Vector3 goal_Pos = new Vector3(3500, 0, 0);
+            Instantiate(Goal, goal_Pos, Quaternion.identity);
         }
         //左方向に進む
         else
@@ -31,6 +35,10 @@ public class GameStart : MonoBehaviour
             PL.transform.SetParent(Instantiate(bfl).transform);
             //右プレイヤは小さい魚            
             PR.transform.SetParent(Instantiate(sfl).transform);
+
+            //ゴール生成
+            Vector3 goal_Pos = new Vector3(-3500, 0, 0);
+            Instantiate(Goal,goal_Pos,Quaternion.identity);
         }
 	}
 	

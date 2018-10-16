@@ -104,7 +104,7 @@ public class VATfunction : MonoBehaviour
             this.pl_Buttons[2]++;
             this.hs_Flag[2] = true;
             this.hs_Flag[0] = false;
-            Debug.Log("check");
+            //Debug.Log("check");
         }
         //上下チェック
         if (this.Head_Switch_Down(3))
@@ -119,10 +119,10 @@ public class VATfunction : MonoBehaviour
             this.pl_Buttons[1]++;
             this.hs_Flag[1] = true;
             this.hs_Flag[3] = false;
-            Debug.Log("check");
+            //Debug.Log("check");
         }
-        Debug.Log(prev_Axis5 = Input.GetAxis("Axis 5"));
-        Debug.Log(prev_Axis6 = Input.GetAxis("Axis 6"));
+        prev_Axis5 = Input.GetAxis("Axis 5");
+        prev_Axis6 = Input.GetAxis("Axis 6");
         //何も押されてないんだったら全ボタンを０にする
         //if (Input.GetAxis("Axis 5") == 0.0f && Input.GetAxis("Axis 6") == 0.0f)
         //{
@@ -249,6 +249,12 @@ public class VATfunction : MonoBehaviour
         this.speed = (-hit_Num * hit_Num) / (2 * mase) + (mase * hit_Num);
     }
 
+    //進行方向をもらうメソッド
+    public float Get_Angle_X()
+    {
+        return this.angle.x;
+    }
+
 	// Use this for initialization
 	void Start ()
     {
@@ -287,8 +293,9 @@ public class VATfunction : MonoBehaviour
         //this.test_Hit++;
         if (this.players_Name == "PL")
         {
-            Debug.Log(this.players_Name);
-            Debug.Log(this.speed);
+            //Debug.Log(this.players_Name);
+            //Debug.Log(this.speed);
         }
+      
     }
 }
