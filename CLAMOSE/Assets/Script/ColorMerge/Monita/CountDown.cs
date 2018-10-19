@@ -53,6 +53,7 @@ public class CountDown : MonoBehaviour {
     public void ResetTime()
     {
         totalTime = maxTime;
+        cntTime = (int)maxTime;
     }
 
     //カウントを始めます

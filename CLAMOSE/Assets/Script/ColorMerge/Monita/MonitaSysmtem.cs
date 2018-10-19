@@ -19,6 +19,7 @@ public class MonitaSysmtem : MonoBehaviour {
     Vector3 colorData;
     int playCnt = 0;
     State state;
+    int stateCnt = 0;
     //public:
     public int designatePushNum = 3;
     public monitaData data;
@@ -39,6 +40,7 @@ public class MonitaSysmtem : MonoBehaviour {
         nowState = Think(nowState);
         DoSystem(state);
         Debug.Log(state);
+        ++stateCnt;
         //状態の更新
         UpdateState(nowState);
     }
@@ -101,9 +103,12 @@ public class MonitaSysmtem : MonoBehaviour {
                 break;
             case State.Result:
                 //勝敗判定
-                nextState = State.Non;
+                if(Input.GetKeyDown(KeyCode.Z))
+                {
+                    nextState = State.Non;
+                }
                 //プレイ回数3回なら終了
-                if(playCnt > 3)
+                if (playCnt > 3)
                 {
                     nextState = State.End;
                 }
@@ -132,8 +137,12 @@ public class MonitaSysmtem : MonoBehaviour {
             case State.Result:
                 //リザルトシーンの時間の処理
                 startCount.ResetTime();
-                GameObject obj = GameObject.FindGameObjectWithTag("theme");
-                Destroy(obj);
+                GameObject[] objs = GameObject.FindGameObjectsWithTag("theme");
+                foreach(GameObject obj in objs)
+                {
+                    Destroy(obj);
+                }
+                data.SetColorData(new Vector3(0, 0, 0));
                 break;
             case State.End:
                 //最終結果を判定
@@ -145,6 +154,7 @@ public class MonitaSysmtem : MonoBehaviour {
     {
         if(state == nowState) { return; }
         state = nowState;
+        stateCnt = 0;
     }
 
     //プレイヤーたちに勝負を始めるか返す

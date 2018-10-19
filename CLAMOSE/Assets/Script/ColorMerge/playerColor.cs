@@ -99,9 +99,9 @@ public class playerColor : MonoBehaviour {
     //初期化
     void Init()
     {
-        color.r = 1.0f;
-        color.b = 1.0f;
-        color.g = 1.0f;
+        color.r = 0.0f;
+        color.b = 0.0f;
+        color.g = 0.0f;
         pushCount.x = 0;
         pushCount.y = 0;
         pushCount.z = 0;

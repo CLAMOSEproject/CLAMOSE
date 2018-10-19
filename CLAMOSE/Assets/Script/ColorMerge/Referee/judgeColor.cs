@@ -16,6 +16,7 @@ public class judgeColor : MonoBehaviour {
     public GameObject player1;
     public GameObject player2;
     public WinState winState;
+    public GameObject correctPrefab;
 
     //private:
     Vector3 monitaColor;
@@ -38,12 +39,14 @@ public class judgeColor : MonoBehaviour {
             winState = WinState.Player1;
             EndJudge();
             Debug.Log("プレイヤー1の勝利");
+            Instantiate(correctPrefab, new Vector3(3.16f, -2.6f, 0), Quaternion.identity);
         }
         else if(player2Color == monitaColor)
         {
             winState = WinState.Player2;
             EndJudge();
             Debug.Log("プレイヤー2の勝利");
+            Instantiate(correctPrefab, new Vector3(-3.3f, -2.4f, 0), Quaternion.identity);
         }
 	}
 

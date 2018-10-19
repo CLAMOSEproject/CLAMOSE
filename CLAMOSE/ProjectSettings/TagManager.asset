@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - clear
+  - Undefined
   - theme
   layers:
   - Default
