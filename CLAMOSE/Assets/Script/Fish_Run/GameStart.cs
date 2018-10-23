@@ -11,8 +11,11 @@ public class GameStart : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
+        int x = Random.Range(0, 10);
+
+        x %= 2;
         //0は右方向に進む
-		if(Random.Range(0,1) == 0)
+        if (x == 0)
         {
             //各魚の場所に各プレイヤを移動させる
             PL.transform.position = bfr.transform.position;
@@ -22,8 +25,10 @@ public class GameStart : MonoBehaviour
             //右プレイヤは小さい魚            
             PR.transform.SetParent(Instantiate(sfr).transform);
             //ゴール生成
-            Vector3 goal_Pos = new Vector3(3500, 0, 0);
-            Instantiate(Goal, goal_Pos, Quaternion.identity);
+            Vector3 goal_Pos = new Vector3(3500, 0, 20);
+            //Instantiate(Goal, goal_Pos, Quaternion.identity);
+
+            Goal.transform.position = goal_Pos;
         }
         //左方向に進む
         else
@@ -37,8 +42,9 @@ public class GameStart : MonoBehaviour
             PR.transform.SetParent(Instantiate(sfl).transform);
 
             //ゴール生成
-            Vector3 goal_Pos = new Vector3(-3500, 0, 0);
-            Instantiate(Goal,goal_Pos,Quaternion.identity);
+            Vector3 goal_Pos = new Vector3(-3500, 0, 20);
+            //Instantiate(Goal,goal_Pos,Quaternion.identity);
+            Goal.transform.position = goal_Pos;
         }
 	}
 	

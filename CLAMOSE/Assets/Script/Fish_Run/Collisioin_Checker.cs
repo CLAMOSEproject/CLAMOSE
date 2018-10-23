@@ -10,22 +10,23 @@ public class Collisioin_Checker : MonoBehaviour
     //勝った時に立つフラグ
     bool win_Flag;
     //オブジェクトの加速度クラス
-    VATfunction vat;
-    //ゴール地点
-    public GameObject Goal;
+    VATfunction vat;    
     //対戦相手(追う側)
     public GameObject Other_Player;
     
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //ゴールにたどり着いたら勝利フラグを立てる（今は未実装)
-        if(collision.gameObject == Goal)
+        //ゴールにたどり着いたら勝利フラグを立てる
+        if (collision.gameObject.tag == "Goal")
         {
             this.win_Flag = true;
         }
-        //追う側と当たったらゲームオーバー
-        this.loose_Flag = true;
+        else
+        {
+            //追う側と当たったらゲームオーバー
+            this.loose_Flag = true;
+        }
     }
 
     public bool Is_Eated()
@@ -52,12 +53,12 @@ public class Collisioin_Checker : MonoBehaviour
         {
             //Debug.Log("Eated!");
             //this.GetComponent<GameObject>().active = false;
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
         else if(this.Is_Alived())
         {
             //Other_Player.SetActive(false);
-            Debug.Log("small win");
+            //Debug.Log("small win");
         }
 
         //Debug.Log(vat.Get_Angle_X());

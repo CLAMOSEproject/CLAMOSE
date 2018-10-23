@@ -103,6 +103,7 @@ MonoBehaviour:
   players_Name: PL
   mase: 4.955
   Is_Going_Left: 1
+  bubble: {fileID: 1189299867564136, guid: 757652576ad74f3438f36606924b5ce1, type: 2}
 --- !u!114 &114933435292923680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,7 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03ce843d817b36740897c9f18cd5b3a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Goal: {fileID: 1283464931680636, guid: b4bfbd4322844a245a65e94e1c70409e, type: 2}
   Other_Player: {fileID: 0}
 --- !u!212 &212189956834394140
 SpriteRenderer:

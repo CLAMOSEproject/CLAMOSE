@@ -102,6 +102,7 @@ MonoBehaviour:
   players_Name: PL
   mase: 5
   Is_Going_Left: 0
+  bubble: {fileID: 1189299867564136, guid: 757652576ad74f3438f36606924b5ce1, type: 2}
 --- !u!212 &212811551871410018
 SpriteRenderer:
   m_ObjectHideFlags: 1

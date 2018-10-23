@@ -16,6 +16,8 @@ public class VATfunction : MonoBehaviour
     Vector3 angle;
     //進行方向を確認するフラグ
     public bool Is_Going_Left;
+    //泡のプレハブ
+    public GameObject bubble;
     
     //左プレイヤ用ダウンフラグ
     bool[] hs_Flag = new bool[4];
@@ -98,6 +100,7 @@ public class VATfunction : MonoBehaviour
             this.hs_Flag[0] = true;
             this.hs_Flag[2] = false;
             //Debug.Log("check");
+            Instantiate(bubble);
         }
         if (this.Head_Switch_Down(2))
         {
@@ -105,6 +108,7 @@ public class VATfunction : MonoBehaviour
             this.hs_Flag[2] = true;
             this.hs_Flag[0] = false;
             //Debug.Log("check");
+            Instantiate(bubble);
         }
         //上下チェック
         if (this.Head_Switch_Down(3))
@@ -113,6 +117,7 @@ public class VATfunction : MonoBehaviour
             this.hs_Flag[3] = true;
             this.hs_Flag[1] = false;
             //Debug.Log("check");
+            Instantiate(bubble);
         }
         if (this.Head_Switch_Down(1))
         {
@@ -120,6 +125,7 @@ public class VATfunction : MonoBehaviour
             this.hs_Flag[1] = true;
             this.hs_Flag[3] = false;
             //Debug.Log("check");
+            Instantiate(bubble);
         }
         prev_Axis5 = Input.GetAxis("Axis 5");
         prev_Axis6 = Input.GetAxis("Axis 6");
@@ -139,21 +145,25 @@ public class VATfunction : MonoBehaviour
         {
             this.pr_Buttons[0]++;
             //Debug.Log("check");
+            Instantiate(bubble);
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             this.pr_Buttons[1]++;
             //Debug.Log("check");
+            Instantiate(bubble);
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton2))
         {
             this.pr_Buttons[2]++;
             //Debug.Log("check");
+            Instantiate(bubble);
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton3))
         {
             this.pr_Buttons[3]++;
             //Debug.Log("check");
+            Instantiate(bubble);
         }
         //if(Input.GetKeyDown(KeyCode.JoystickButton0) == false && Input.GetKeyDown(KeyCode.JoystickButton0) == false && Input.GetKeyDown(KeyCode.JoystickButton1) == false && Input.GetKeyDown(KeyCode.JoystickButton2) == false && Input.GetKeyDown(KeyCode.JoystickButton3) == false)
         //{
@@ -283,11 +293,12 @@ public class VATfunction : MonoBehaviour
     {
         //フレームごとにボタンチェック
         this.Buttons_Check();
+        int hn = Get_Masshed_Button_All(this.players_Name);
         //加速
-        this.Accelerate_Speed(Get_Masshed_Button_All(this.players_Name));
-        //移動
-
+        this.Accelerate_Speed(hn);
+        //移動        
         this.transform.position += this.angle * this.speed / 10;
+        
 
         //テストで連打数上昇
         //this.test_Hit++;
