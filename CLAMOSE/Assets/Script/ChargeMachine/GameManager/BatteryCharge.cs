@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BatteryCharge : MonoBehaviour
 {
+    //基本的な情報
     private int  batteryRate;
     private int  buttoninputCount;
     private bool winFlag;
@@ -25,6 +26,7 @@ public class BatteryCharge : MonoBehaviour
     //ボタンを押していない時間
     private float nonbuttoninputCount;
 
+//その他
     private User  user;
 
     // Use this for initialization
@@ -49,37 +51,52 @@ public class BatteryCharge : MonoBehaviour
                 {
                     this.winFlag = true;
                     Debug.Log("勝者　" + this.WinnerPlayer());
+
+                    //勝利のリザルトへ進む
+
+
                 }
 
                 if (this.ButtonInputCheck())
                 {
                     this.buttoninputCount += this.ButtonInputCount();
-                    if(this.keyUpCount >= 1.0f)
-                    {
-                        this.buttoninputCount -= (int)this.keyUpCount;
-                        this.keyUpCount = 0;
-                    }
                 }
+
+                //キーボード操作が離れているとき
                 if(this.KeyUP())
                 {
-                    this.keyUpCount += Time.deltaTime * this.keyupbatteryRate + 0.3f;
+                    this.keyUpCount += Time.deltaTime * this.keyupbatteryRate + 0.1f;
+                }
+                if (this.keyUpCount >= 1.0f)
+                {
+                    this.buttoninputCount -= (int)this.keyUpCount;
+                    this.keyUpCount = 0;
                 }
                 break;
             case "Adjustment":
-                if(this.KeyUP())
+                if (this.KeyUP())
                 {
                     //調整中のボタン判定回数にも増加させる
                     this.overCharge.AdjastmentButtonCountIncrease(this.ButtonInputCount());
+                    this.keyUpCount += Time.deltaTime * this.keyupbatteryRate + 0.3f;
+                }
+                if (this.keyUpCount >= 3.0f)
+                {
+                    this.buttoninputCount -= (int)this.keyUpCount;
+                    this.keyUpCount = 0;
                 }
                 break;
             case "OverChargeCount":
-
-                //1フレームずつ調整が入る
-                if(!this.ButtonInputCheck())
+                //充電機能
+                if (this.ButtonInputCheck())
+                {
+                    this.buttoninputCount += this.ButtonInputCount();
+                }
+                //キーボード離れたときのカウンタ
+                else
                 {
                     this.nonbuttoninputCount += Time.deltaTime;
                 }
-
                 if(this.nonbuttoninputCount >= 4.0f)
                 {
                     this.buttoninputCount -= this.OverChargeDecrement();
@@ -102,7 +119,7 @@ public class BatteryCharge : MonoBehaviour
         switch(this.user.getPlayer().ToString())
         {
            case "Player1":
-                return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.B);
+                return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D);
            case "Player2":
                 return Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.J);
         }
@@ -146,6 +163,21 @@ public class BatteryCharge : MonoBehaviour
 
     bool KeyUP()
     {
-        return Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.B);
+        bool keyupFlag = false;
+        switch(this.user.getPlayer().ToString())
+        {
+            case "Player1":
+                keyupFlag = Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D);
+                break;
+            case "Player2":
+                keyupFlag = Input.GetKeyUp(KeyCode.J) || Input.GetKeyUp(KeyCode.L);
+                break;
+        }
+        return keyupFlag;
+    }
+
+    public float getNonbuttoninputCount()
+    {
+        return this.nonbuttoninputCount;
     }
 }

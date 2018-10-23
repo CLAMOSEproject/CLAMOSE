@@ -24,7 +24,7 @@ public class OverCharge : MonoBehaviour
 
     //調整中に行われるボタン回数
     private int adjastmentbuttonLimitCount;
-    public  int adjastmentCountRange;
+    public int adjastmentCountRange;
 
     //調整中に入るタイミング
     public int adjastmentTiming;
@@ -59,12 +59,13 @@ public class OverCharge : MonoBehaviour
                 //指定範囲のボタンを回数を超えた
                 if (this.isAdjastmentButtonLimit())
                 {
+                    this.adjastmentbuttonLimitCount = 0;
                     chengeState = State.OverChargeCount;
                 }
                 Debug.Log("指定範囲中" + this.adjastmentbuttonLimitCount);
                 break;
             case State.OverChargeCount:
-                if (!this.Check())
+                if (!this.Check() && this.batteryChargeRate.getNonbuttoninputCount() >= 4.0f)
                 {
                     chengeState = State.Normal;
                 }

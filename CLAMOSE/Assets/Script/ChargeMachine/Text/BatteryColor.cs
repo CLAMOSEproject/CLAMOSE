@@ -1,30 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BatteryColor : MonoBehaviour
 {
 
     //基本的な情報
-    public BatteryCharge batteryCharge;        //バッテリー情報
+    public BatteryCharge batteryCharge;     //バッテリー情報
     public OverCharge overchargeState;      //現在のスマホの状態
-    private short batteryRate;          //バッテリー率を取得して格納する変数
+    private short batteryRate;              //バッテリー率を取得して格納する変数
 
     //マテリアル情報
-    private SpriteRenderer nowColor;
+    private Image nowColor;
     private Color color;
 
     //大きさの情報
     private float ScaleMax_x;           //最大の横サイズ
-
+    RectTransform rectTransform;
 
     // Use this for initialization
     void Start()
     {
-        this.color = GetComponent<SpriteRenderer>().color;
-        this.nowColor = GetComponent<SpriteRenderer>();
+        this.color = GetComponent<Image>().color;
+        this.nowColor = GetComponent<Image>();
         this.nowColor.color = new Color();
-        this.ScaleMax_x = this.gameObject.transform.localScale.x;
+        this.rectTransform = GetComponent<RectTransform>();
+        this.ScaleMax_x = GetComponent<RectTransform>().sizeDelta.x;
     }
 
     // Update is called once per frame
@@ -32,7 +34,7 @@ public class BatteryColor : MonoBehaviour
     {
         this.batteryRate = (short)this.batteryCharge.getbatteryRate();
         this.nowColor.color = this.CreateBatteryColor();
-        this.transform.localScale = new Vector2(this.GageScale(), this.gameObject.transform.localScale.y);
+        this.rectTransform.sizeDelta = new Vector2(this.GageScale(), this.rectTransform.sizeDelta.y);
     }
 
     Color CreateBatteryColor()
@@ -60,6 +62,10 @@ public class BatteryColor : MonoBehaviour
 
     float GageScale()
     {
-        return this.ScaleMax_x * this.batteryRate / 100;
+        if(this.batteryRate <= 100)
+        {
+            return this.ScaleMax_x * this.batteryRate / 100;
+        }
+        return this.ScaleMax_x;
     }
 }
