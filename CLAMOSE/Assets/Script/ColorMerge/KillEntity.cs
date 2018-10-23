@@ -20,4 +20,9 @@ public class KillEntity : MonoBehaviour {
             Destroy(this.gameObject);
         }
 	}
+    //消す時間をフレームで設定
+    public void SetLimitTime(float limitTime)
+    {
+        this.limitTime = limitTime;
+    }
 }

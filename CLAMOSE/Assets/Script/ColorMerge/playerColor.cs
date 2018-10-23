@@ -14,9 +14,9 @@ public class playerColor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        color.r = 1.0f;
-        color.b = 1.0f;
-        color.g = 1.0f;   
+        color.r = 0.0f;
+        color.b = 0.0f;
+        color.g = 0.0f;   
     }
 	
 	// Update is called once per frame

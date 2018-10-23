@@ -23,6 +23,8 @@ public class judgeColor : MonoBehaviour {
     Vector3 player1Color;
     Vector3 player2Color;
     bool startCheck = true;
+    int player1WinCount = 0;
+    int player2WinCount = 0;
 	// Use this for initialization
 	void Start () {
         winState = WinState.Non;
@@ -39,7 +41,7 @@ public class judgeColor : MonoBehaviour {
             winState = WinState.Player1;
             EndJudge();
             Debug.Log("プレイヤー1の勝利");
-            Instantiate(correctPrefab, new Vector3(3.16f, -2.6f, 0), Quaternion.identity);
+            Instantiate(correctPrefab, new Vector3(3.15f, -2.6f, 0), Quaternion.identity);
         }
         else if(player2Color == monitaColor)
         {

@@ -26,6 +26,7 @@ public class MonitaSysmtem : MonoBehaviour {
     public CountDown startCount;    //スタートをカウントする
     public judgeColor referee;      //審判
     public GameObject prefab;
+    public GameObject nextGameText;
 
     // Use this for initialization
     void Start()
@@ -102,15 +103,16 @@ public class MonitaSysmtem : MonoBehaviour {
                 }
                 break;
             case State.Result:
-                //勝敗判定
-                if(Input.GetKeyDown(KeyCode.Z))
-                {
-                    nextState = State.Non;
-                }
                 //プレイ回数3回なら終了
-                if (playCnt > 3)
+                if (playCnt >= 3)
                 {
                     nextState = State.End;
+                    break;
+                }
+                //勝敗判定
+                if(stateCnt >= 180)
+                {
+                    nextState = State.Non;
                 }
                 break;
             case State.End:
@@ -143,6 +145,11 @@ public class MonitaSysmtem : MonoBehaviour {
                     Destroy(obj);
                 }
                 data.SetColorData(new Vector3(0, 0, 0));
+                if(stateCnt == 60)
+                {
+                    GameObject obj = Instantiate(nextGameText, transform.position, Quaternion.identity);
+                    obj.AddComponent<KillEntity>().SetLimitTime(1);
+                }
                 break;
             case State.End:
                 //最終結果を判定
