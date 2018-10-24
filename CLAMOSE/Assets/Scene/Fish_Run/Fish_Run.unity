@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 1588617364}
   - component: {fileID: 1588617365}
   - component: {fileID: 1588617366}
+  - component: {fileID: 1588617367}
   m_Layer: 0
   m_Name: Players
   m_TagString: Untagged
@@ -935,14 +936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e2089dbb9699541a6a20e85a0107cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bfl: {fileID: 1702399068395528, guid: 48b3d6cac415ea149bc6ee08e4e65fff, type: 2}
-  bfr: {fileID: 1399033637276042, guid: b8b48387b5b401c40adb5bf696027bc3, type: 2}
-  sfl: {fileID: 1118858522482036, guid: 42cbeef6486aeb74595a9c4e1ab23898, type: 2}
-  sfr: {fileID: 1717810601050726, guid: 6e2c0ea0d9f77ab4482f574dbb450cef, type: 2}
-  Goal: {fileID: 523506731}
-  goal_Marker: {fileID: 766742915}
-  PL: {fileID: 1216937562}
-  PR: {fileID: 1688200745}
 --- !u!114 &1588617366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,6 +953,25 @@ MonoBehaviour:
   winner_L_Big: {fileID: 0}
   winner_R_Small: {fileID: 0}
   winner_R_Big: {fileID: 0}
+--- !u!114 &1588617367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1588617363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 342f645a711395a4d8c02827cd4327f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bfl: {fileID: 1702399068395528, guid: 48b3d6cac415ea149bc6ee08e4e65fff, type: 2}
+  bfr: {fileID: 1399033637276042, guid: b8b48387b5b401c40adb5bf696027bc3, type: 2}
+  sfl: {fileID: 1118858522482036, guid: 42cbeef6486aeb74595a9c4e1ab23898, type: 2}
+  sfr: {fileID: 1717810601050726, guid: 6e2c0ea0d9f77ab4482f574dbb450cef, type: 2}
+  Goal: {fileID: 523506731}
+  goal_Marker: {fileID: 766742915}
+  PL: {fileID: 1216937562}
+  PR: {fileID: 1688200745}
 --- !u!1 &1611886932
 GameObject:
   m_ObjectHideFlags: 0

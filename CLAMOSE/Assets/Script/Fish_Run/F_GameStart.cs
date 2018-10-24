@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameStart : MonoBehaviour
-{
+public class F_GameStart : MonoBehaviour {
+
     public GameObject bfl, bfr, sfl, sfr;
     public GameObject Goal;
     public GameObject goal_Marker;
     public GameObject PL, PR;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start()
     {
         int x = Random.Range(0, 10);
 
@@ -52,11 +52,11 @@ public class GameStart : MonoBehaviour
 
             goal_Marker.transform.position = new Vector3(20, 300, 0);
         }
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-		
-	}
+
+    }
 }
