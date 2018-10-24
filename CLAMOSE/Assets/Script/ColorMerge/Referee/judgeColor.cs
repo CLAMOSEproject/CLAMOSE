@@ -8,7 +8,7 @@ public class judgeColor : MonoBehaviour {
     {
         Non,
         Player1,
-        Player2
+        Player2,
     }
 
     //public:
@@ -35,9 +35,11 @@ public class judgeColor : MonoBehaviour {
         if (!startCheck) { return; }
         //色情報を取得
         ReceiveColor();
+        if(winState != WinState.Non) { return; }
         //常に比較します
         if (player1Color == monitaColor)
         {
+            ++player1WinCount;
             winState = WinState.Player1;
             EndJudge();
             Debug.Log("プレイヤー1の勝利");
@@ -45,11 +47,13 @@ public class judgeColor : MonoBehaviour {
         }
         else if(player2Color == monitaColor)
         {
+            ++player2WinCount;
             winState = WinState.Player2;
             EndJudge();
             Debug.Log("プレイヤー2の勝利");
             Instantiate(correctPrefab, new Vector3(-3.3f, -2.4f, 0), Quaternion.identity);
         }
+        Debug.Log(player1WinCount);
 	}
 
     //色を取得します
@@ -82,5 +86,16 @@ public class judgeColor : MonoBehaviour {
     public void EndJudge()
     {
         startCheck = false;
+    }
+
+    //プレイヤー1の勝ちカウントの取得
+    public int GetPlayer1WinCount()
+    {
+        return player1WinCount;
+    }
+    //プレイヤー2の勝ちカウントの取得
+    public int GetPlayer2WinCount()
+    {
+        return player2WinCount;
     }
 }

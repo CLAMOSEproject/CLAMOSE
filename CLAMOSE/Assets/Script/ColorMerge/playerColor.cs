@@ -7,7 +7,7 @@ public class playerColor : MonoBehaviour {
     //private:
     Color color;
     Vector3 pushCount;
-
+    const int MaxPushCount = 9;
     //public:
     public int playerNumber = 0;
     public MonitaSysmtem system;
@@ -32,6 +32,7 @@ public class playerColor : MonoBehaviour {
                 case 1: Push(); break;
                 case 2: Push2(); break;
             }
+            RestrictionPush();
             color.r = (pushCount.x / 10.0f);
             color.g = (pushCount.y / 10.0f);
             color.b = (pushCount.z / 10.0f);
@@ -96,6 +97,22 @@ public class playerColor : MonoBehaviour {
         return new Vector3(color.r,color.g,color.b) * 10.0f;
     }
 
+    //押すカウントに制限をかける
+    void RestrictionPush()
+    {
+        if(pushCount.x >= MaxPushCount)
+        {
+            pushCount.x = MaxPushCount;
+        }
+        if(pushCount.y >= MaxPushCount)
+        {
+            pushCount.y = MaxPushCount;
+        }
+        if(pushCount.z >= MaxPushCount)
+        {
+            pushCount.z = MaxPushCount;
+        }
+    }
     //初期化
     void Init()
     {

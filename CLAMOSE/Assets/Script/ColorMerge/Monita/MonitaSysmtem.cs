@@ -20,6 +20,7 @@ public class MonitaSysmtem : MonoBehaviour {
     int playCnt = 0;
     State state;
     int stateCnt = 0;
+  
     //public:
     public int designatePushNum = 3;
     public monitaData data;
@@ -27,6 +28,7 @@ public class MonitaSysmtem : MonoBehaviour {
     public judgeColor referee;      //審判
     public GameObject prefab;
     public GameObject nextGameText;
+    public GameObject endText;
 
     // Use this for initialization
     void Start()
@@ -40,7 +42,6 @@ public class MonitaSysmtem : MonoBehaviour {
         State nowState = state;
         nowState = Think(nowState);
         DoSystem(state);
-        Debug.Log(state);
         ++stateCnt;
         //状態の更新
         UpdateState(nowState);
@@ -139,6 +140,7 @@ public class MonitaSysmtem : MonoBehaviour {
             case State.Result:
                 //リザルトシーンの時間の処理
                 startCount.ResetTime();
+                referee.EndJudge();
                 GameObject[] objs = GameObject.FindGameObjectsWithTag("theme");
                 foreach(GameObject obj in objs)
                 {
@@ -152,7 +154,31 @@ public class MonitaSysmtem : MonoBehaviour {
                 }
                 break;
             case State.End:
-                //最終結果を判定
+                if(stateCnt == 10)
+                {
+                    Instantiate(endText, new Vector3(0, 0, 0), Quaternion.identity);
+                }
+                if (stateCnt >= 60)
+                {
+                    //シーン遷移
+                }
+                if(stateCnt != 0) { break; }
+                if(referee.GetPlayer1WinCount() > referee.GetPlayer2WinCount())
+                {
+                    Debug.Log("プレイヤー1です");
+                    //プレイヤー1の勝利
+                    CommonData.AddWinCount(CommonData.CommonState.Player1);
+                }
+                else if(referee.GetPlayer1WinCount() < referee.GetPlayer2WinCount())
+                {
+                    //プレイヤー2の勝利
+                    CommonData.AddWinCount(CommonData.CommonState.Player2);
+                }
+                else
+                {
+                    //引き分け
+                    CommonData.AddWinCount(CommonData.CommonState.Draw);
+                }
                 break;
         }
     }
