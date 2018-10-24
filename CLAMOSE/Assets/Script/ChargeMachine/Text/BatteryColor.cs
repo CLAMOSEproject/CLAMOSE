@@ -24,7 +24,6 @@ public class BatteryColor : MonoBehaviour
     {
         this.color = GetComponent<Image>().color;
         this.nowColor = GetComponent<Image>();
-        this.nowColor.color = new Color();
         this.rectTransform = GetComponent<RectTransform>();
         this.ScaleMax_x = GetComponent<RectTransform>().sizeDelta.x;
     }
@@ -33,30 +32,35 @@ public class BatteryColor : MonoBehaviour
     void Update()
     {
         this.batteryRate = (short)this.batteryCharge.getbatteryRate();
-        this.nowColor.color = this.CreateBatteryColor();
+        this.color = this.GageCheck();
+        this.nowColor.color = this.color;
         this.rectTransform.sizeDelta = new Vector2(this.GageScale(), this.rectTransform.sizeDelta.y);
     }
 
-    Color CreateBatteryColor()
+    Color GageCheck()
     {
         Color color = new Color();
-        switch (this.overchargeState.getStateName())
+        if(this.batteryRate < 30)
         {
-            //正常状態
-            case "Normal":
-                color = Color.green;
-                break;
-            case "Adjustment":
-                color = Color.yellow;
-                break;
-            case "OverChargeCount":
-                color = Color.red;
-                break;
-            case "OverCharge":
-                color = Color.red;
-                break;
+            color = Color.green;
         }
-        Debug.Log("現在の色　" + color);
+        else if(this.batteryRate < 70)
+        {
+            color = new Color(115 / 255, 255 / 255, 0,255/255);
+        }
+        else if(this.batteryRate < 100)
+        {
+            color = Color.yellow;
+        }
+        else if (this.batteryRate == 100)
+        {
+            color = Color.blue;
+            return color;
+        }
+        else
+        {
+            color = Color.red;
+        }
         return color;
     }
 
