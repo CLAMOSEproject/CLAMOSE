@@ -1,0 +1,355 @@
+fileFormatVersion: 2
+guid: 145adecd7b967ac41884aacadebc3c71
+timeCreated: 1539055735
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: MathFont_0
+    21300002: MathFont_1
+    21300004: MathFont_2
+    21300006: MathFont_3
+    21300008: MathFont_4
+    21300010: MathFont_5
+    21300012: MathFont_6
+    21300014: MathFont_7
+    21300016: MathFont_8
+    21300018: MathFont_9
+    21300020: MathFont_10
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 10
+  spriteMeshType: 1
+  alignment: 1
+  spritePivot: {x: 0, y: 1}
+  spriteBorder: {x: 11, y: 0, z: 736, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MathFont_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 0
+        width: 49
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -24.5, y: 44}
+        - {x: -24.5, y: -30}
+        - {x: -22.5, y: -40}
+        - {x: -13.5, y: -42}
+        - {x: 24.5, y: -42}
+        - {x: 24.5, y: 44}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MathFont_1
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 0
+        width: 71
+        height: 114
+      alignment: 9
+      pivot: {x: -0.15581864, y: -0.5369038}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -33.5, y: -41}
+        - {x: 33.5, y: -41}
+        - {x: 33.5, y: 45}
+        - {x: -33.5, y: 45}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MathFont_2
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 70
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -33, y: 44}
+        - {x: -35, y: 39}
+        - {x: -35, y: -42}
+        - {x: 35, y: -42}
+        - {x: 35, y: 42}
+        - {x: 34, y: 44}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MathFont_3
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 0
+        width: 71
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -35.5, y: 44}
+        - {x: -35.5, y: -21}
+        - {x: -26.5, y: -42}
+        - {x: 35.5, y: -42}
+        - {x: 35.5, y: 44}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MathFont_4
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 71
+        height: 114
+      alignment: 9
+      pivot: {x: 0.49761292, y: 0.5380584}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -35.5, y: 44}
+        - {x: -35.5, y: -42}
+        - {x: 27.5, y: -42}
+        - {x: 35.5, y: -33}
+        - {x: 35.5, y: 41}
+        - {x: 31.5, y: 44}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MathFont_5
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 0
+        width: 71
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -35.5, y: 44}
+        - {x: -35.5, y: -42}
+        - {x: 35.5, y: -42}
+        - {x: 35.5, y: 44}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MathFont_6
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 0
+        width: 72
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -36, y: 44}
+        - {x: -36, y: -17}
+        - {x: -26, y: -42}
+        - {x: 36, y: -42}
+        - {x: 36, y: 42}
+        - {x: 34, y: 44}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MathFont_7
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 0
+        width: 72
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -36, y: -36}
+        - {x: -32, y: -42}
+        - {x: 36, y: -42}
+        - {x: 36, y: 44}
+        - {x: -29, y: 44}
+        - {x: -36, y: 40}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MathFont_8
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 0
+        width: 72
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 1, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -36, y: 35}
+        - {x: -36, y: -42}
+        - {x: 34, y: -42}
+        - {x: 36, y: -40}
+        - {x: 36, y: 44}
+        - {x: -30, y: 44}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MathFont_9
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 0
+        width: 72
+        height: 114
+      alignment: 9
+      pivot: {x: 0.5403951, y: 0.47937426}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -33, y: 44}
+        - {x: -37, y: 43}
+        - {x: -37, y: -35}
+        - {x: -29, y: -42}
+        - {x: 37, y: -42}
+        - {x: 37, y: 36}
+        - {x: 31, y: 44}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: MathFont_10
+      rect:
+        serializedVersion: 2
+        x: 711
+        y: 0
+        width: 71
+        height: 114
+      alignment: 9
+      pivot: {x: 0.63253784, y: 0.48858538}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: -31, y: 44}
+        - {x: -36, y: 38}
+        - {x: -36, y: -39}
+        - {x: -33, y: -42}
+        - {x: 36, y: -42}
+        - {x: 36, y: 44}
+      tessellationDetail: 0
+    outline:
+    - - {x: 14, y: -51}
+      - {x: 23, y: -47}
+      - {x: 33, y: -38}
+      - {x: 34, y: 2}
+      - {x: 51, y: 9}
+      - {x: 47, y: -48}
+      - {x: 60, y: -51}
+      - {x: 378, y: -51}
+      - {x: 393, y: -45}
+      - {x: 393, y: 41}
+      - {x: 392, y: 46}
+      - {x: 129.23077, y: 57}
+      - {x: -385, y: 51}
+      - {x: -393, y: 48}
+      - {x: -393, y: 12}
+      - {x: -385, y: 9}
+      - {x: -381, y: -46}
+      - {x: -373, y: -51}
+      - {x: -190, y: -51}
+      - {x: -178, y: -25}
+      - {x: -159, y: -51}
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
