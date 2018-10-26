@@ -60,7 +60,7 @@ public class MonitaSysmtem : MonoBehaviour {
         //色の格納
         SetMonitaColor();
         //色オブジェクトの生成
-        GameObject obj = Instantiate(prefab, new Vector3(0, 2.5f, 0), Quaternion.identity);
+        GameObject obj = Instantiate(prefab, new Vector3(0, 2.9f, 0), Quaternion.identity);
         //ここで、設定した色情報を取得する
         obj.GetComponent<colorSelect>().SetColorData(colorData);
     }
