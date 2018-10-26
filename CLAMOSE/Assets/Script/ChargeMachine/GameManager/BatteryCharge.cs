@@ -8,7 +8,7 @@ public class BatteryCharge : MonoBehaviour
     private int batteryRate;
     private int buttoninputCount;
     private bool winFlag;
-    private OverCharge overCharge;
+   
 
     //チャージ倍率
     public int chargeMagnification;
@@ -31,26 +31,57 @@ public class BatteryCharge : MonoBehaviour
     public short toWinmaintenancetimeLimit;      //勝利するまでの判定時間
 
     //その他
-    private User user;
+    private User        user;
+    private OverCharge  overCharge;
+    public  B_GameStart gameStart;
+    public  GameJudge   isGamePlaynow;
+
 
     // Use this for initialization
     void Start()
     {
+        //バッテリーの基本情報
         this.batteryRate = 0;
+       
+        //ボタンの入力情報
         this.buttoninputCount = 0;
-        this.overCharge = GetComponent<OverCharge>();
         this.keyUpCount = 0;
         this.nonbuttoninputCount = 0;
-        this.user = GetComponent<User>();
-
-
+       
+        //時間関係
         this.overchargeButtondownCount = 0;
         this.toWinmaintenanceTime = 0;
+
+        //その他
+        this.user = GetComponent<User>();
+        this.overCharge = GetComponent<OverCharge>();
+
+        if(this.gameStart == null)
+        {
+            Debug.Log("中身無いよー");
+        }
+        if(this.isGamePlaynow == null)
+        {
+            Debug.Log("審判なしでゲームを開始しないで");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        //ゲームスタートと表示されていない　
+        if(this.gameStart.isDrawing())
+        {
+            return;
+        }
+        //ゲームの勝敗がついた
+        if (!this.isGamePlaynow.isGamePlaynow())
+        {
+            this.user.ToResult(User.WinorLos.Los);
+            return;
+        }
+
+        //バッテリーが充電量が負になる場合
         if(this.batteryRate < 0)
         {
             this.batteryRate = 0;
@@ -62,10 +93,8 @@ public class BatteryCharge : MonoBehaviour
             this.toWinmaintenanceTime += Time.deltaTime;
             if(this.isToWin())
             {
-                Debug.Log("勝者　" + this.WinnerPlayer());
-
                 //勝利のリザルトへ進む
-                this.user.SetWinorLos(2);
+                this.user.ToResult(User.WinorLos.Win);
                 return;
             }
             Debug.Log("勝負判定" + this.toWinmaintenanceTime);
