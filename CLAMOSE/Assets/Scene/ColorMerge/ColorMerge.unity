@@ -1192,12 +1192,15 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 114791226258270184, guid: 8751e8d12866a4e459dcd54e033801e9,
         type: 2}
       propertyPath: endText
       value: 
       objectReference: {fileID: 1726933966830038, guid: 0b8631859175b814ea4d7f1b063e7990,
         type: 2}
+=======
+>>>>>>> aecf037e2616b2631e53464e8368dc0494e65345
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8751e8d12866a4e459dcd54e033801e9, type: 2}
   m_IsPrefabParent: 0
