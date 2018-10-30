@@ -33,11 +33,13 @@ public class playerColor : MonoBehaviour {
                 case 2: Push2(); break;
             }
             RestrictionPush();
-            color.r = (pushCount.x / 10.0f);
-            color.g = (pushCount.y / 10.0f);
-            color.b = (pushCount.z / 10.0f);
+           
+            color.r = ((pushCount.x + pushCount.z) / 10.0f);
+            color.b = (pushCount.y / 10.0f);
+            color.g = (pushCount.z / 10.0f);
+
         }
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(
+        this.GetComponent<SpriteRenderer>().color = new Color(
          color.r, color.g, color.b);     
     }
 
@@ -94,7 +96,7 @@ public class playerColor : MonoBehaviour {
     //プレイヤーの現在の色情報を取得
     public Vector3 GetColorData()
     {
-        return new Vector3(color.r,color.g,color.b) * 10.0f;
+        return pushCount;
     }
 
     //押すカウントに制限をかける

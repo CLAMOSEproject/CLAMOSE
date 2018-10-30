@@ -60,6 +60,10 @@ public class judgeColor : MonoBehaviour {
     void ReceiveColor()
     {
         monitaColor = monita.GetComponent<MonitaSysmtem>().GetColorData();
+        Vector3 tmp;
+        tmp.y = monitaColor.y;
+        monitaColor.y = monitaColor.z;
+        monitaColor.z = tmp.y;
         player1Color = player1.GetComponent<playerColor>().GetColorData();
         player2Color = player2.GetComponent<playerColor>().GetColorData();
     }

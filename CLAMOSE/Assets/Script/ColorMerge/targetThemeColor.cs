@@ -25,10 +25,10 @@ public class targetThemeColor : MonoBehaviour {
                 target.text = (monita.GetColorData().x).ToString();
                 break;
             case "blue":
-                target.text = (monita.GetColorData().y).ToString();
+                target.text = (monita.GetColorData().z).ToString();
                 break;
             case "yellow":
-                target.text = (monita.GetColorData().z).ToString();
+                target.text = (monita.GetColorData().y).ToString();
                 break;
         }
     }
