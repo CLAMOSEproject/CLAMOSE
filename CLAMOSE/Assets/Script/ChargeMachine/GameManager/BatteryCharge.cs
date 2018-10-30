@@ -7,7 +7,6 @@ public class BatteryCharge : MonoBehaviour
     //基本的な情報
     private int batteryRate;
     private int buttoninputCount;
-    private bool winFlag;
    
 
     //チャージ倍率
@@ -77,7 +76,10 @@ public class BatteryCharge : MonoBehaviour
         //ゲームの勝敗がついた
         if (!this.isGamePlaynow.isGamePlaynow())
         {
-            this.user.ToResult(User.WinorLos.Los);
+            if(this.user.getWinorLos() == User.WinorLos.Non || this.overCharge.getStateName() == "OverCharge")
+            {
+                this.user.setMatchDecision(User.WinorLos.Los);
+            }
             return;
         }
 
@@ -94,7 +96,7 @@ public class BatteryCharge : MonoBehaviour
             if(this.isToWin())
             {
                 //勝利のリザルトへ進む
-                this.user.ToResult(User.WinorLos.Win);
+                this.user.setMatchDecision(User.WinorLos.Win);
                 return;
             }
             Debug.Log("勝負判定" + this.toWinmaintenanceTime);
@@ -151,12 +153,12 @@ public class BatteryCharge : MonoBehaviour
                 }
                 break;
             case "OverCharge":
+                this.user.setMatchDecision(User.WinorLos.Los);
                 break;
         }
 
         //チャージカウンタを%変換
         this.CountfromRate();
-        Debug.Log(this.batteryRate + "％");
     }
 
     //ボタンの判定

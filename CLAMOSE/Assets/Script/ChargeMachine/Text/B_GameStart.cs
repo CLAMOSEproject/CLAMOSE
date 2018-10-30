@@ -97,7 +97,7 @@ public class B_GameStart : MonoBehaviour
     //スタートが表示されているか？
     public bool isDrawing()
     {
-        return (short)this.form < this.gamestartFont.Length;
+        return (short)this.form < this.gamestartFont.Length - 1;
     }
 
 
