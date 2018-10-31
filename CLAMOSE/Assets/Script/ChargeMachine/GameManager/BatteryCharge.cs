@@ -22,7 +22,7 @@ public class BatteryCharge : MonoBehaviour
     //ボタン関連
     private float nonbuttoninputCount;            //ボタンが押されていない
     private int overchargeButtondownCount;      //ボタンが押されている
-    public int overchargeButtondownMax;        //ボタンのリミット回数
+    public  int overchargeButtondownMax;        //ボタンのリミット回数
 
     //勝利判定までの関連
 
@@ -30,10 +30,11 @@ public class BatteryCharge : MonoBehaviour
     public short toWinmaintenancetimeLimit;      //勝利するまでの判定時間
 
     //その他
-    private User        user;
-    private OverCharge  overCharge;
-    public  B_GameStart gameStart;
-    public  GameJudge   isGamePlaynow;
+    private User               user;
+    private OverCharge         overCharge;
+    public  B_GameStart        gameStart;
+    public  GameJudge          isGamePlaynow;
+    private Controller_Input   padController;
 
 
     // Use this for initialization
@@ -54,6 +55,7 @@ public class BatteryCharge : MonoBehaviour
         //その他
         this.user = GetComponent<User>();
         this.overCharge = GetComponent<OverCharge>();
+        this.padController = GetComponent<Controller_Input>();
 
         if(this.gameStart == null)
         {
@@ -62,6 +64,11 @@ public class BatteryCharge : MonoBehaviour
         if(this.isGamePlaynow == null)
         {
             Debug.Log("審判なしでゲームを開始しないで");
+        }
+
+        if(this.padController == null)
+        {
+            Debug.Log("コントローラーなしで判定");
         }
     }
 
@@ -113,11 +120,11 @@ public class BatteryCharge : MonoBehaviour
         switch (this.overCharge.getStateName())
         {
             case "Normal":
-                if (this.ButtonInputCheck())
+                this.padController.Buttons_Check();
+                for(int i = 1; i <= 3;++i)
                 {
-                    this.buttoninputCount += this.ButtonInputCount();
+                    this.buttoninputCount += this.padController.Get_Masshed_Button_One("PR", 1);
                 }
-
                 //キーボード操作が離れているとき
                 if (this.KeyUP())
                 {
