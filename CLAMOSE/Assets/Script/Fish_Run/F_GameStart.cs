@@ -58,6 +58,8 @@ public class F_GameStart : MonoBehaviour {
             Goal.transform.position = goal_Pos;
 
             goal_Marker.transform.position = new Vector3(20, canvas_Height-20, 0);
+
+            GetComponent<GameOverCheack>().Game_Going_Left();
         }
     }
 

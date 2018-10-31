@@ -306,18 +306,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 9.785323, y: -0.14828587}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.41, y: 2.63}
+    oldSize: {x: 6, y: 6}
     newSize: {x: 0.41, y: 2.63}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 19.980646, y: 40.51676}
+  m_Size: {x: 10, y: 40.51676}
   m_EdgeRadius: 0
 --- !u!50 &523506733
 Rigidbody2D:
@@ -373,7 +373,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ff05dfce335c07e418d3021540f57b6c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 70e12d2dcef97b24a87e62da551c33ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -391,7 +391,7 @@ Transform:
   m_GameObject: {fileID: 523506731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 30}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 4, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -950,10 +950,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PL: {fileID: 1216937562}
   PR: {fileID: 1688200745}
-  winner_L_Small: {fileID: 0}
-  winner_L_Big: {fileID: 0}
-  winner_R_Small: {fileID: 0}
-  winner_R_Big: {fileID: 0}
+  winner_L_Small: {fileID: 1215921584971014, guid: 8e56d8ea23611384299c35e02f919fe3,
+    type: 2}
+  winner_L_Big: {fileID: 1518032326487410, guid: e1931ef29c34f8f4fbb5125608f6e938,
+    type: 2}
+  winner_R_Small: {fileID: 1019960576324658, guid: 8aba70e56d59b9148b0fe23e3d230d65,
+    type: 2}
+  winner_R_Big: {fileID: 1635241338877944, guid: c7dfc5e976ae44a4bac876a1edcdebb4,
+    type: 2}
+  zpos: 5
 --- !u!114 &1588617367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1068,7 +1073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   down_Count: 240
-  player_Left: {fileID: 1688200745}
+  player_Left: {fileID: 1216937562}
   player_Right: {fileID: 1688200745}
 --- !u!1 &1654458128
 GameObject:
