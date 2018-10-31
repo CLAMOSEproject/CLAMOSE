@@ -14,8 +14,7 @@ public class GameOverCheack : MonoBehaviour
     //小さい魚がどっちかを確認する変数
     string who_Is_Small;
 
-	// Use this for initialization
-	void Start ()
+    void Get_Checker()
     {
         //コリジョンチェッカ修得
         if (PL.transform.parent.GetComponent<Collisioin_Checker>() == null)
@@ -31,10 +30,20 @@ public class GameOverCheack : MonoBehaviour
             who_Is_Small = "PL";
         }
     }
+	// Use this for initialization
+	void Start ()
+    {
+        
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        //チェッカーがヌルの間ずっと試す
+        if(checker == null)
+        {
+            Get_Checker();
+        }
 		//どっちが勝ったのかを判定
         if(checker.Is_Eated())
         {

@@ -12,12 +12,17 @@ public class VATfunction : MonoBehaviour
     public float mase;
     //速度
     float speed;
+    //連打状況を確認するためのカウント
+    int time_Count;
     //仮の方向
     Vector3 angle;
     //進行方向を確認するフラグ
     public bool Is_Going_Left;
     //泡のプレハブ
     public GameObject bubble;
+
+    //動きが可能なことを示すフラグ
+    bool can_Move_Flag;
     
     //左プレイヤ用ダウンフラグ
     bool[] hs_Flag = new bool[4];
@@ -92,87 +97,97 @@ public class VATfunction : MonoBehaviour
     void Buttons_Check()
     {
         //左のプレイヤ        
-
-        //左右チェック
-        if (this.Head_Switch_Down(0))
+        if (players_Name == "PL")
         {
-            this.pl_Buttons[0]++;
-            this.hs_Flag[0] = true;
-            this.hs_Flag[2] = false;
-            //Debug.Log("check");
-            Instantiate(bubble);
+            //左右チェック
+            if (this.Head_Switch_Down(0))
+            {
+                this.pl_Buttons[0]++;
+                this.hs_Flag[0] = true;
+                this.hs_Flag[2] = false;
+                //Debug.Log("check");
+                Instantiate(bubble).GetComponent<Bubble_Moving>().Set_X(transform.position.x);
+                time_Count = 0;
+            }
+            if (this.Head_Switch_Down(2))
+            {
+                this.pl_Buttons[2]++;
+                this.hs_Flag[2] = true;
+                this.hs_Flag[0] = false;
+                //Debug.Log("check");
+                Instantiate(bubble).GetComponent<Bubble_Moving>().Set_X(transform.position.x);
+                time_Count = 0;
+            }
+            //上下チェック
+            if (this.Head_Switch_Down(3))
+            {
+                this.pl_Buttons[3]++;
+                this.hs_Flag[3] = true;
+                this.hs_Flag[1] = false;
+                //Debug.Log("check");
+                Instantiate(bubble).GetComponent<Bubble_Moving>().Set_X(transform.position.x);
+                time_Count = 0;
+            }
+            if (this.Head_Switch_Down(1))
+            {
+                this.pl_Buttons[1]++;
+                this.hs_Flag[1] = true;
+                this.hs_Flag[3] = false;
+                //Debug.Log("check");
+                Instantiate(bubble).GetComponent<Bubble_Moving>().Set_X(transform.position.x);
+                time_Count = 0;
+            }
+            prev_Axis5 = Input.GetAxis("Axis 5");
+            prev_Axis6 = Input.GetAxis("Axis 6");
+            //何も押されてないんだったら全ボタンを０にする
+            //if (Input.GetAxis("Axis 5") == 0.0f && Input.GetAxis("Axis 6") == 0.0f)
+            //{
+            //    for (int i = 0; i < 4; i++)
+            //    {
+            //        this.pl_Buttons[i] = 0;
+            //        this.hs_Flag[i] = false;
+            //    }
+            //}
         }
-        if (this.Head_Switch_Down(2))
-        {
-            this.pl_Buttons[2]++;
-            this.hs_Flag[2] = true;
-            this.hs_Flag[0] = false;
-            //Debug.Log("check");
-            Instantiate(bubble);
-        }
-        //上下チェック
-        if (this.Head_Switch_Down(3))
-        {
-            this.pl_Buttons[3]++;
-            this.hs_Flag[3] = true;
-            this.hs_Flag[1] = false;
-            //Debug.Log("check");
-            Instantiate(bubble);
-        }
-        if (this.Head_Switch_Down(1))
-        {
-            this.pl_Buttons[1]++;
-            this.hs_Flag[1] = true;
-            this.hs_Flag[3] = false;
-            //Debug.Log("check");
-            Instantiate(bubble);
-        }
-        prev_Axis5 = Input.GetAxis("Axis 5");
-        prev_Axis6 = Input.GetAxis("Axis 6");
-        //何も押されてないんだったら全ボタンを０にする
-        //if (Input.GetAxis("Axis 5") == 0.0f && Input.GetAxis("Axis 6") == 0.0f)
-        //{
-        //    for (int i = 0; i < 4; i++)
-        //    {
-        //        this.pl_Buttons[i] = 0;
-        //        this.hs_Flag[i] = false;
-        //    }
-        //}
-
+        else
         //右のプレイヤ
-
-        if (Input.GetKeyDown(KeyCode.JoystickButton0))
         {
-            this.pr_Buttons[0]++;
-            //Debug.Log("check");
-            Instantiate(bubble);
+            if (Input.GetKeyDown(KeyCode.JoystickButton0))
+            {
+                this.pr_Buttons[0]++;
+                //Debug.Log("check");
+                Instantiate(bubble).GetComponent<Bubble_Moving>().Set_X(transform.position.x);
+                time_Count = 0;
+            }
+            if (Input.GetKeyDown(KeyCode.JoystickButton1))
+            {
+                this.pr_Buttons[1]++;
+                //Debug.Log("check");
+                Instantiate(bubble).GetComponent<Bubble_Moving>().Set_X(transform.position.x);
+                time_Count = 0;
+            }
+            if (Input.GetKeyDown(KeyCode.JoystickButton2))
+            {
+                this.pr_Buttons[2]++;
+                //Debug.Log("check");
+                Instantiate(bubble).GetComponent<Bubble_Moving>().Set_X(transform.position.x);
+                time_Count = 0;
+            }
+            if (Input.GetKeyDown(KeyCode.JoystickButton3))
+            {
+                this.pr_Buttons[3]++;
+                //Debug.Log("check");
+                Instantiate(bubble).GetComponent<Bubble_Moving>().Set_X(transform.position.x);
+                time_Count = 0;
+            }
+            //if(Input.GetKeyDown(KeyCode.JoystickButton0) == false && Input.GetKeyDown(KeyCode.JoystickButton0) == false && Input.GetKeyDown(KeyCode.JoystickButton1) == false && Input.GetKeyDown(KeyCode.JoystickButton2) == false && Input.GetKeyDown(KeyCode.JoystickButton3) == false)
+            //{
+            //    for (int i = 0; i < 4; i++)
+            //    {
+            //        this.pr_Buttons[i] = 0;
+            //    }
+            //}
         }
-        if (Input.GetKeyDown(KeyCode.JoystickButton1))
-        {
-            this.pr_Buttons[1]++;
-            //Debug.Log("check");
-            Instantiate(bubble);
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton2))
-        {
-            this.pr_Buttons[2]++;
-            //Debug.Log("check");
-            Instantiate(bubble);
-        }
-        if (Input.GetKeyDown(KeyCode.JoystickButton3))
-        {
-            this.pr_Buttons[3]++;
-            //Debug.Log("check");
-            Instantiate(bubble);
-        }
-        //if(Input.GetKeyDown(KeyCode.JoystickButton0) == false && Input.GetKeyDown(KeyCode.JoystickButton0) == false && Input.GetKeyDown(KeyCode.JoystickButton1) == false && Input.GetKeyDown(KeyCode.JoystickButton2) == false && Input.GetKeyDown(KeyCode.JoystickButton3) == false)
-        //{
-        //    for (int i = 0; i < 4; i++)
-        //    {
-        //        this.pr_Buttons[i] = 0;
-        //    }
-        //}
-
     }
     //getter
     //押した回数全体をもらう
@@ -250,6 +265,10 @@ public class VATfunction : MonoBehaviour
     //移動加速
     private void Accelerate_Speed(int hit_Num)
     {
+        if(hit_Num < 0)
+        {
+            return;
+        }
         //加速は＋範囲
         if(((-1.0f / mase * hit_Num) + mase) <= 0.0f)
         {
@@ -265,6 +284,12 @@ public class VATfunction : MonoBehaviour
         return this.angle.x;
     }
 
+    //外からの開始を命令されるメソッド
+    public void Start_the_Game()
+    {
+        this.can_Move_Flag = true;
+    }
+
 	// Use this for initialization
 	void Start ()
     {
@@ -277,6 +302,7 @@ public class VATfunction : MonoBehaviour
             this.angle = new Vector3(1, 0, 0);
         }
         this.speed = 0.0f;
+        time_Count = 0;
         //ボタンを押した回数を初期化
         for (int i = 0; i < 4; i++)
         {
@@ -286,20 +312,27 @@ public class VATfunction : MonoBehaviour
         }
         this.prev_Axis5 = 0.0f;
         this.prev_Axis6 = 0.0f;
+
+        can_Move_Flag = false;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(can_Move_Flag == false)
+        {
+            return;
+        }
         //フレームごとにボタンチェック
         this.Buttons_Check();
         int hn = Get_Masshed_Button_All(this.players_Name);
         //加速
-        this.Accelerate_Speed(hn);
+        this.Accelerate_Speed(hn);        
+        
         //移動        
         this.transform.position += this.angle * this.speed / 10;
-        
 
+        time_Count++;
         //テストで連打数上昇
         //this.test_Hit++;
         if (this.players_Name == "PL")
