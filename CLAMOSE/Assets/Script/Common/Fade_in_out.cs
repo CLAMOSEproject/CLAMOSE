@@ -14,14 +14,13 @@ public class Fade_in_out : MonoBehaviour {
     }
 
     //時間関係
-    private float        fadetimeCount;
-    public float         fadetime;
+    private float         fadetimeCount;
+    public  float         fadetime;
 
     //フェードさせたい画像の情報元
     private Color           fadetargetColor;
+    private SpriteRenderer fadetargetSprite;
     private float           initializeOpacity;
-    private Image           fadetargetImage;
-    private SpriteRenderer  fadetargetSprite;
 
     //フェードインとアウトの選択が出来るように
     public Mode mode;
@@ -34,22 +33,11 @@ public class Fade_in_out : MonoBehaviour {
         {
             Debug.Log("画像元の色がありません");
         }
-        if(this.fadetargetImage == null && this.fadetargetSprite == null)
-        {
-            Debug.Log("リソースがありません");
-        }
 
-        //初期状態のα値を取得しておく
-        if(this.fadetargetImage)
-        {
-            this.fadetargetColor = GetComponent<Image>().color;
-            this.initializeOpacity = this.fadetargetColor.a;
-        }
-        else if(this.fadetargetSprite)
-        {
-            this.fadetargetColor = GetComponent<SpriteRenderer>().color;
-            this.initializeOpacity = this.fadetargetColor.a;
-        }
+        //不透明度の代入
+        this.fadetargetSprite = GetComponent<SpriteRenderer>();
+        this.fadetargetColor = this.fadetargetSprite.color;
+        this.initializeOpacity = this.fadetargetColor.a;
 
         this.fadetimeCount = 0;
 	}
@@ -57,7 +45,7 @@ public class Fade_in_out : MonoBehaviour {
 
 	void Update ()
     {
-        //フェード処理が終了
+        //フェード処理ではない
         if(!this.isPlayFadenow())
         {
             return;
@@ -85,28 +73,36 @@ public class Fade_in_out : MonoBehaviour {
     }
 
     //フェードインを行います
-    private void PlayFadeIn()
+    public void PlayFadeIn()
     {
         this.fadetimeCount += Time.deltaTime;
-        this.fadetargetColor.a = 255 - this.fadetimeCount / this.fadetime * this.initializeOpacity;   
-        if(this.fadetargetImage)
-        {
-            Color nowColor = this.fadetargetImage.color;
-            this.fadetargetImage.color = new Color(this.fadetargetColor.a, nowColor.r, nowColor.g, nowColor.b);
-        }
-        if(this.fadetargetSprite)
-        {
-            Color nowColor = this.fadetargetSprite.color;
-            this.fadetargetSprite.color = new Color(this.fadetargetColor.a, nowColor.r, nowColor.g, nowColor.b);
-        }
+        //α値を代入
+        float alfaaspect = 1 / this.fadetime;
+        float alfaOpacity = this.initializeOpacity;
+
+        alfaOpacity = 1 - (this.fadetimeCount * alfaaspect);
+        Color nowcolor = this.fadetargetSprite.color;
+        this.fadetargetSprite.color = new Color(alfaOpacity, nowcolor.r, nowcolor.g, nowcolor.b);
     }
 
     //フェードアウトを行います
-    private void PlayFadeOut()
+    public void PlayFadeOut()
     {
+        this.fadetimeCount += Time.deltaTime;
+        //α値を代入
+        float alfaaspect = 1 / this.fadetime;
+        float alfaOpacity = this.initializeOpacity;
 
+        alfaOpacity = this.fadetimeCount * alfaaspect;
+        Color nowcolor = this.fadetargetSprite.color;
+        this.fadetargetSprite.color = new Color(alfaOpacity, nowcolor.r, nowcolor.g, nowcolor.b);
     }
 
-
-
+    //最初の状態に戻します
+    public void ResetSpriteColor()
+    {
+        this.fadetimeCount = 0;
+        Color resetColor = this.fadetargetColor;
+        this.fadetargetSprite.color = new Color(this.initializeOpacity, resetColor.r,resetColor.g,resetColor.b);
+    }
 }
