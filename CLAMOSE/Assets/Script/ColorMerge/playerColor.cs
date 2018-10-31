@@ -7,7 +7,7 @@ public class playerColor : MonoBehaviour {
     //private:
     Color color;
     Vector3 pushCount;
-
+    const int MaxPushCount = 9;
     //public:
     public int playerNumber = 0;
     public MonitaSysmtem system;
@@ -32,11 +32,14 @@ public class playerColor : MonoBehaviour {
                 case 1: Push(); break;
                 case 2: Push2(); break;
             }
-            color.r = (pushCount.x / 10.0f);
-            color.g = (pushCount.y / 10.0f);
-            color.b = (pushCount.z / 10.0f);
+            RestrictionPush();
+           
+            color.r = ((pushCount.x + pushCount.z) / 10.0f);
+            color.b = (pushCount.y / 10.0f);
+            color.g = (pushCount.z / 10.0f);
+
         }
-        gameObject.GetComponent<SpriteRenderer>().color = new Color(
+        this.GetComponent<SpriteRenderer>().color = new Color(
          color.r, color.g, color.b);     
     }
 
@@ -93,9 +96,25 @@ public class playerColor : MonoBehaviour {
     //プレイヤーの現在の色情報を取得
     public Vector3 GetColorData()
     {
-        return new Vector3(color.r,color.g,color.b) * 10.0f;
+        return pushCount;
     }
 
+    //押すカウントに制限をかける
+    void RestrictionPush()
+    {
+        if(pushCount.x >= MaxPushCount)
+        {
+            pushCount.x = MaxPushCount;
+        }
+        if(pushCount.y >= MaxPushCount)
+        {
+            pushCount.y = MaxPushCount;
+        }
+        if(pushCount.z >= MaxPushCount)
+        {
+            pushCount.z = MaxPushCount;
+        }
+    }
     //初期化
     void Init()
     {

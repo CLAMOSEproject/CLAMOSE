@@ -20,6 +20,7 @@ public class MonitaSysmtem : MonoBehaviour {
     int playCnt = 0;
     State state;
     int stateCnt = 0;
+  
     //public:
     public int designatePushNum = 3;
     public monitaData data;
@@ -27,6 +28,7 @@ public class MonitaSysmtem : MonoBehaviour {
     public judgeColor referee;      //審判
     public GameObject prefab;
     public GameObject nextGameText;
+    public GameObject endText;
 
     // Use this for initialization
     void Start()
@@ -40,7 +42,6 @@ public class MonitaSysmtem : MonoBehaviour {
         State nowState = state;
         nowState = Think(nowState);
         DoSystem(state);
-        Debug.Log(state);
         ++stateCnt;
         //状態の更新
         UpdateState(nowState);
@@ -54,12 +55,20 @@ public class MonitaSysmtem : MonoBehaviour {
         randColor.r = Random.Range(designatePushNum, 10);
         randColor.g = Random.Range(designatePushNum, 10);
         randColor.b = Random.Range(designatePushNum, 10);
+        if (randColor.r + randColor.g >= 10)
+        {
+            //randColor.r -= Random.Range(designatePushNum, (int)randColor.r - 1);
+            //randColor.g -= Random.Range(designatePushNum, (int)randColor.g - 1);
+        }
+        colorData.x = 0;
+        colorData.y = 8;
+        colorData.z = 0;
         //色をVectorにする
-        colorData = new Vector3(randColor.r, randColor.g, randColor.b);
+        //colorData = new Vector3(randColor.r, randColor.g, randColor.b);
         //色の格納
         SetMonitaColor();
         //色オブジェクトの生成
-        GameObject obj = Instantiate(prefab, new Vector3(0, 2.5f, 0), Quaternion.identity);
+        GameObject obj = Instantiate(prefab, new Vector3(0, 2.9f, 0), Quaternion.identity);
         //ここで、設定した色情報を取得する
         obj.GetComponent<colorSelect>().SetColorData(colorData);
     }
@@ -139,6 +148,7 @@ public class MonitaSysmtem : MonoBehaviour {
             case State.Result:
                 //リザルトシーンの時間の処理
                 startCount.ResetTime();
+                referee.EndJudge();
                 GameObject[] objs = GameObject.FindGameObjectsWithTag("theme");
                 foreach(GameObject obj in objs)
                 {
@@ -152,7 +162,31 @@ public class MonitaSysmtem : MonoBehaviour {
                 }
                 break;
             case State.End:
-                //最終結果を判定
+                if(stateCnt == 10)
+                {
+                    Instantiate(endText, new Vector3(0, 0, 0), Quaternion.identity);
+                }
+                if (stateCnt >= 60)
+                {
+                    //シーン遷移
+                }
+                if(stateCnt != 0) { break; }
+                if(referee.GetPlayer1WinCount() > referee.GetPlayer2WinCount())
+                {
+                    Debug.Log("プレイヤー1です");
+                    //プレイヤー1の勝利
+                    CommonData.AddWinCount(CommonData.CommonState.Player1);
+                }
+                else if(referee.GetPlayer1WinCount() < referee.GetPlayer2WinCount())
+                {
+                    //プレイヤー2の勝利
+                    CommonData.AddWinCount(CommonData.CommonState.Player2);
+                }
+                else
+                {
+                    //引き分け
+                    CommonData.AddWinCount(CommonData.CommonState.Draw);
+                }
                 break;
         }
     }
