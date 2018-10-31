@@ -16,14 +16,16 @@ public class CommonData {
     //シーン間の共通データ
     //static CommonState commonState;
     static int[] winCount = new int[3];
-
-
+    static CommonState[] winState = new CommonState[3];
+    static int gameCount = 0;
     // Use this for initialization
     void Start()
     {
         for(int i = 0;i < 3;++i)
         {
             winCount[i] = 0;
+            winState[i] = CommonState.Non;
+            gameCount = 0;
         }
     }
 
@@ -31,10 +33,18 @@ public class CommonData {
     public static void AddWinCount(CommonState playerState)
     {
         ++winCount[(int)playerState];
+        winState[gameCount] = playerState;
+        ++gameCount;
     }
     //ゲーム全体の勝ちカウントの取得
     public static int GetWinCount(CommonState playerState)
     {
         return winCount[(int)playerState];
+    }
+    //指定したステートが勝ったかを返す
+    //何番目のゲームで、どちらが勝利したかを指定する
+    public static bool GetWinState(CommonState playerState)
+    {
+        return winState[gameCount-1] == playerState;
     }
 }
