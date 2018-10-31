@@ -8,16 +8,17 @@ public class CommonData {
     public enum CommonState
     {
         Non = -1,
-        Player1,
-        Player2,
-        Draw,
+        Player1 = 0,
+        Player2 = 1,
+        Draw = 4,
     };
 
+    
     //シーン間の共通データ
-    //static CommonState commonState;
     static int[] winCount = new int[3];
     static CommonState[] winState = new CommonState[3];
-    static int gameCount = 0;
+    static int gameCount = -1;
+
     // Use this for initialization
     void Start()
     {
@@ -25,16 +26,17 @@ public class CommonData {
         {
             winCount[i] = 0;
             winState[i] = CommonState.Non;
-            gameCount = 0;
+            gameCount = -1;
         }
     }
 
     //ゲーム全体の勝ちカウントを1プラスする
+    //
     public static void AddWinCount(CommonState playerState)
     {
         ++winCount[(int)playerState];
-        winState[gameCount] = playerState;
         ++gameCount;
+        winState[gameCount] = playerState;
     }
     //ゲーム全体の勝ちカウントの取得
     public static int GetWinCount(CommonState playerState)
@@ -45,6 +47,29 @@ public class CommonData {
     //何番目のゲームで、どちらが勝利したかを指定する
     public static bool GetWinState(CommonState playerState)
     {
-        return winState[gameCount-1] == playerState;
+        return winState[gameCount] == playerState;
+    }
+    //指定した番号のゲームで、勝利したステートを返す
+    public static CommonState GetCommonState(int gameCnt)
+    {
+        return winState[gameCnt];
+    }
+    //指定した番号のゲームで、そのステートが勝ちかを返す
+    public static bool CheckWinState(CommonState playerState,int gameCnt)
+    {
+        if(GetCommonState(gameCnt) == playerState)
+        {
+            return true;
+        }
+        return false;
+    }
+    //現在のおこなったゲームの回数を取得します
+    public static int GetNowGameCnt()
+    {
+        if(gameCount < 0)
+        {
+            return 0;
+        }
+        return gameCount;
     }
 }

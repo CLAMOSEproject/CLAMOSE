@@ -1,36 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Winjudge : MonoBehaviour {
 
-    public GameObject winPrefab;
-    public GameObject LosePrefab;
-    public GameObject drawPrefab;
+    //public
+    public Sprite winSprite;
+    public Sprite loseSprite;
+    public Sprite drawSprite;
 
-    public GameObject leftCanvas;
-    public GameObject rightCanvas;
+    public GameObject leftImage;
+    public GameObject rightImage;
+
 	// Use this for initialization
 	void Start () {
-		if(CommonData.GetWinState(CommonData.CommonState.Player1))
+        if (CommonData.CheckWinState(CommonData.CommonState.Player1,CommonData.GetNowGameCnt()))
         {
             //左が負けで、右が勝ち
-            GameObject winObj = Instantiate(winPrefab, transform.position, Quaternion.identity);    //左
-            GameObject loseObj = Instantiate(LosePrefab, transform.position, Quaternion.identity);   //右
-            winObj.transform.SetParent(leftCanvas.transform, false);
-            loseObj.transform.SetParent(rightCanvas.transform, false);
+            leftImage.GetComponent<Image>().sprite = winSprite;
+            rightImage.GetComponent<Image>().sprite = loseSprite;
         }
-        else if(CommonData.GetWinState(CommonData.CommonState.Player2))
+        else if (CommonData.CheckWinState(CommonData.CommonState.Player1, CommonData.GetNowGameCnt()))
         {
             //左が勝ちで、右が負け
-            Instantiate(LosePrefab, transform.position, Quaternion.identity);
-            Instantiate(winPrefab, transform.position, Quaternion.identity);
+            leftImage.GetComponent<Image>().sprite = loseSprite;
+            rightImage.GetComponent<Image>().sprite = winSprite;
         }
-        else if(CommonData.GetWinState(CommonData.CommonState.Draw))
+        else if (CommonData.CheckWinState(CommonData.CommonState.Player1, CommonData.GetNowGameCnt()))
         {
             //どちらも、引き分けを出す
-            Instantiate(drawPrefab, transform.position, Quaternion.identity);
-            Instantiate(drawPrefab, transform.position, Quaternion.identity);
+            leftImage.GetComponent<Image>().sprite = drawSprite;
+            rightImage.GetComponent<Image>().sprite = drawSprite;
         }
 	}
 	
