@@ -10,7 +10,7 @@ public class B_Result : MonoBehaviour
 
     //ゲームの結果表示に使用する
     private const int resultRenderTypes = 3;
-    private Image resultRender;
+    private SpriteRenderer resultRender;
 
     //表示時間関連
     private float timeMaxRenderresultText;
@@ -20,7 +20,7 @@ public class B_Result : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        this.resultRender = GetComponent<Image>();
+        this.resultRender = GetComponent<SpriteRenderer>();
         this.resultRender.enabled = false;
         //表示時間
         this.timeMaxRenderresultText = 5.0f;

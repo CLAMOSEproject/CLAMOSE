@@ -7,7 +7,7 @@ public class B_GameStart : MonoBehaviour
 {
     //画像関連
     public Sprite[] gamestartFont;
-    private Image gamestartText;
+    private SpriteRenderer gamestartText;
 
     //時間関連
     private float renderTime;
@@ -29,7 +29,7 @@ public class B_GameStart : MonoBehaviour
     void Start()
     {
         //画像関連
-        this.gamestartText = GetComponent<Image>();
+        this.gamestartText = GetComponent<SpriteRenderer>();
 
         //時間関連
         this.renderTime = 0;
@@ -65,9 +65,15 @@ public class B_GameStart : MonoBehaviour
         short nowrenderImage =  (short)this.form;
 
         //Startが表示された後はもう表示しない
-        if (!this.isDrawing())
+        if (!this.isDrawing() && this.isChengeimageTime())
         {
             this.gamestartText.enabled = false;
+            return;
+        }
+
+        if(this.form == Form.end)
+        {
+            this.AdditionUpdatetime();
             return;
         }
 
@@ -83,7 +89,6 @@ public class B_GameStart : MonoBehaviour
             this.AdditionUpdatetime();
             this.gamestartText.enabled = true;
         }
-
         this.gamestartText.sprite = this.gamestartFont[nowrenderImage];
     }
 
