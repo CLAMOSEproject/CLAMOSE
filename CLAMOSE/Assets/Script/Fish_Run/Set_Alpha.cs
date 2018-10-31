@@ -15,6 +15,16 @@ public class Set_Alpha : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if(GetComponent<F_Count_Down>().Get_Count()>=0)
+        {
+            Color bc = gameObject.GetComponent<Image>().color;
+
+            bc.a = 0.0f;
+
+            gameObject.GetComponent<Image>().color = bc;
+            return;
+        }
+
         //連打数を求める
         int mashed = 0;
         mashed += player.transform.parent.GetComponent<VATfunction>().Get_Masshed_Button_All("PL");

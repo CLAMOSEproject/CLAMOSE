@@ -20,6 +20,9 @@ public class VATfunction : MonoBehaviour
     public bool Is_Going_Left;
     //泡のプレハブ
     public GameObject bubble;
+
+    //動きが可能なことを示すフラグ
+    bool can_Move_Flag;
     
     //左プレイヤ用ダウンフラグ
     bool[] hs_Flag = new bool[4];
@@ -281,6 +284,12 @@ public class VATfunction : MonoBehaviour
         return this.angle.x;
     }
 
+    //外からの開始を命令されるメソッド
+    public void Start_the_Game()
+    {
+        this.can_Move_Flag = true;
+    }
+
 	// Use this for initialization
 	void Start ()
     {
@@ -303,11 +312,17 @@ public class VATfunction : MonoBehaviour
         }
         this.prev_Axis5 = 0.0f;
         this.prev_Axis6 = 0.0f;
+
+        can_Move_Flag = false;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(can_Move_Flag == false)
+        {
+            return;
+        }
         //フレームごとにボタンチェック
         this.Buttons_Check();
         int hn = Get_Masshed_Button_All(this.players_Name);

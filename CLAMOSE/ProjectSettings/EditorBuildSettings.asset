@@ -5,6 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/test.unity
+  - enabled: 0
+    path: Assets/Scene/Test/test.unity
     guid: 79aa81bd7a0aff347b45581e10d89e38
+  - enabled: 1
+    path: Assets/Scene/Title/Title.unity
+    guid: 926b3972e173eee47b43b7a37cf984b2
+  - enabled: 1
+    path: Assets/Scene/ChargeMachine/ChargeMachine.unity
+    guid: 66ea8a331905c7941a2bdc955ce0cab5
+  - enabled: 1
+    path: Assets/Scene/ColorMerge/ColorMerge.unity
+    guid: 52a3a2a704d717845a0b57326c0c187d
+  - enabled: 1
+    path: Assets/Scene/Fish_Run/Fish_Run.unity
+    guid: becfc79096b6f084f876675c6e5d01a9
+  - enabled: 1
+    path: Assets/Scene/Movie/Movie.unity
+    guid: 4d217a60b07e91248a724aa15091e718
