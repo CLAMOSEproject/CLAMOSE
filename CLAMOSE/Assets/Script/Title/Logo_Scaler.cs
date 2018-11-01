@@ -15,15 +15,19 @@ public class Logo_Scaler : MonoBehaviour
     public int pump_Time;
     int time_Count;
 
-	// Use this for initialization
-	void Start ()
+    //サイズ比率
+    public float x_Rate;
+    public float y_Rate;
+
+    // Use this for initialization
+    void Start ()
     {
         //カンバスサイズを取る
         canvas_X = transform.parent.GetComponent<RectTransform>().rect.width;
         canvas_Y = transform.parent.GetComponent<RectTransform>().rect.height;
 
         //各サイズに代入
-        logo_Size_Max = new Vector2(canvas_X / 4.0f * 3.0f, canvas_Y / 4.0f * 3.0f);
+        logo_Size_Max = new Vector2(canvas_X * x_Rate, canvas_Y * y_Rate);
         logo_Size = logo_Size_Max;
 
         //カウント初期化

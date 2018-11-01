@@ -89,14 +89,14 @@ public class GameOverCheack : MonoBehaviour
             //右行き
             if (going_Left_Flag == false)
             {
-                winner_Pos.x += 20;
+                winner_Pos.x += 10;
                 //アニメーション用プレハブ生成
                 Instantiate(winner_R_Small, winner_Pos, Quaternion.identity);
             }
             //左行き
             else
             {
-                winner_Pos.x -= 20;
+                winner_Pos.x -= 10;
                 Instantiate(winner_L_Small, winner_Pos, Quaternion.identity);
             }
             Debug.Log("small win");

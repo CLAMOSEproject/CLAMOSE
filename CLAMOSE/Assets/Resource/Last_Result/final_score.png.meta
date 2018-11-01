@@ -1,12 +1,16 @@
 fileFormatVersion: 2
-guid: 379cc2f94fa6e93478b9230207be97c8
-timeCreated: 1540978322
+guid: 59f480bdac21b7e4dafc0a3c5e5b2c31
+timeCreated: 1541052700
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: karir1_0
-    21300002: karir1_1
-    21300004: karir1_2
+    21300000: final_score_0
+    21300002: final_score_1
+    21300004: final_score_2
+    21300006: final_score_3
+    21300008: final_score_4
+    21300010: final_score_5
+    21300012: final_score_6
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -103,13 +107,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: karir1_0
+      name: final_score_0
       rect:
         serializedVersion: 2
-        x: 241
-        y: 449
-        width: 400
-        height: 128
+        x: 5
+        y: 464
+        width: 250
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,13 +121,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: karir1_1
+      name: final_score_1
       rect:
         serializedVersion: 2
-        x: 238
-        y: 300
-        width: 400
-        height: 128
+        x: 6
+        y: 325
+        width: 250
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,13 +135,69 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: karir1_2
+      name: final_score_2
       rect:
         serializedVersion: 2
-        x: 234
-        y: 151
-        width: 400
-        height: 128
+        x: 5
+        y: 188
+        width: 250
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: final_score_3
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 47
+        width: 250
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: final_score_4
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 465
+        width: 250
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: final_score_5
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 327
+        width: 250
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: final_score_6
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 188
+        width: 250
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

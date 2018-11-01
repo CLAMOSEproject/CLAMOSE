@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 6ec77825150127940b61125d5e0e5e71
-timeCreated: 1540978322
+guid: 32edff33abb8ea641b47261fa4d4904a
+timeCreated: 1541052700
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: karir2_0
-    21300002: karir2_1
-    21300004: karir2_2
+    21300000: round2_0
+    21300002: round2_1
+    21300004: round2_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -103,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: karir2_0
+      name: round2_0
       rect:
         serializedVersion: 2
-        x: 270
-        y: 443
-        width: 400
-        height: 128
+        x: 0
+        y: 413
+        width: 1000
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,13 +117,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: karir2_1
+      name: round2_1
       rect:
         serializedVersion: 2
-        x: 270
-        y: 295
-        width: 400
-        height: 128
+        x: 0
+        y: 277
+        width: 1000
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,13 +131,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: karir2_2
+      name: round2_2
       rect:
         serializedVersion: 2
-        x: 273
-        y: 151
-        width: 400
-        height: 128
+        x: 0
+        y: 131
+        width: 1000
+        height: 100
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

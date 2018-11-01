@@ -38,6 +38,7 @@ public class F_GameStart : MonoBehaviour {
             //Instantiate(Goal, goal_Pos, Quaternion.identity);
 
             Goal.transform.position = goal_Pos;
+            
 
             goal_Marker.transform.position = new Vector3(canvas_Width-20, canvas_Height-20, 0);
         }
@@ -56,6 +57,7 @@ public class F_GameStart : MonoBehaviour {
             Vector3 goal_Pos = new Vector3(-3800, 0, 60);
             //Instantiate(Goal,goal_Pos,Quaternion.identity);
             Goal.transform.position = goal_Pos;
+            Goal.GetComponent<SpriteRenderer>().flipX = true;
 
             goal_Marker.transform.position = new Vector3(20, canvas_Height-20, 0);
 
