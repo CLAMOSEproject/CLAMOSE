@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 //ここでは、モニターの制御を行います
 //主に、色の決定、指定したタイミングで色を出すことを行います
@@ -166,14 +166,14 @@ public class MonitaSysmtem : MonoBehaviour {
                 {
                     Instantiate(endText, new Vector3(0, 0, 0), Quaternion.identity);
                 }
-                if (stateCnt >= 60)
+                if (stateCnt >= 120)
                 {
                     //シーン遷移
+                    SceneManager.LoadSceneAsync("Result");
                 }
                 if(stateCnt != 0) { break; }
                 if(referee.GetPlayer1WinCount() > referee.GetPlayer2WinCount())
                 {
-                    Debug.Log("プレイヤー1です");
                     //プレイヤー1の勝利
                     CommonData.AddWinCount(CommonData.CommonState.Player1);
                 }

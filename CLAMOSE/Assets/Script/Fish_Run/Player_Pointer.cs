@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Pointer : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class Player_Pointer : MonoBehaviour
     float start_Distance;
     //相対距離
     float distance;
+    //カンバスサイズ
+    int canvas_Width;
+    int canvas_Height;
 
     int time_Count;
 
@@ -30,7 +34,10 @@ public class Player_Pointer : MonoBehaviour
 	void Start ()
     {
         time_Count = 0;
-	}
+        canvas_Width = (int)transform.parent.GetComponent<RectTransform>().rect.width;
+        canvas_Height = (int)transform.parent.GetComponent<RectTransform>().rect.height;
+
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -57,7 +64,7 @@ public class Player_Pointer : MonoBehaviour
                 persent += 0.03f;
             }
             //左方向行き
-            Vector3 pos = new Vector3(580 * persent, 300, 0);           
+            Vector3 pos = new Vector3(canvas_Width * persent, canvas_Height-20, 0);           
             
             this.transform.position = pos;
         }
@@ -69,7 +76,7 @@ public class Player_Pointer : MonoBehaviour
                 persent += 0.03f;
             }
             //右方向行き
-            Vector3 pos = new Vector3(580-(580 * persent), 300, 0);
+            Vector3 pos = new Vector3(canvas_Width - (canvas_Width * persent), canvas_Height-20, 0);
             
             this.transform.position = pos;
         }

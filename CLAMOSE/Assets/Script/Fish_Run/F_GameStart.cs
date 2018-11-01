@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class F_GameStart : MonoBehaviour {
 
@@ -8,14 +9,20 @@ public class F_GameStart : MonoBehaviour {
     public GameObject Goal;
     public GameObject goal_Marker;
     public GameObject PL, PR;
+    public GameObject canvas;
+
+    int canvas_Width;
+    int canvas_Height;
 
     // Use this for initialization
     void Start()
     {
         int x = Random.Range(0, 10);
 
-        //x %= 2;
-        x = 0;
+        canvas_Width = (int)canvas.GetComponent<RectTransform>().rect.width;
+        canvas_Height = (int)canvas.GetComponent<RectTransform>().rect.height;
+
+        x %= 2;        
         //0は右方向に進む
         if (x == 0)
         {
@@ -27,12 +34,12 @@ public class F_GameStart : MonoBehaviour {
             //右プレイヤは小さい魚            
             PR.transform.SetParent(Instantiate(sfr).transform);
             //ゴール生成
-            Vector3 goal_Pos = new Vector3(3500, 0, 20);
+            Vector3 goal_Pos = new Vector3(3800, 0, 20);
             //Instantiate(Goal, goal_Pos, Quaternion.identity);
 
             Goal.transform.position = goal_Pos;
 
-            goal_Marker.transform.position = new Vector3(565, 300, 0);
+            goal_Marker.transform.position = new Vector3(canvas_Width-20, canvas_Height-20, 0);
         }
         //左方向に進む
         else
@@ -46,11 +53,13 @@ public class F_GameStart : MonoBehaviour {
             PR.transform.SetParent(Instantiate(bfl).transform);
 
             //ゴール生成
-            Vector3 goal_Pos = new Vector3(-3500, 0, 20);
+            Vector3 goal_Pos = new Vector3(-3800, 0, 20);
             //Instantiate(Goal,goal_Pos,Quaternion.identity);
             Goal.transform.position = goal_Pos;
 
-            goal_Marker.transform.position = new Vector3(20, 300, 0);
+            goal_Marker.transform.position = new Vector3(20, canvas_Height-20, 0);
+
+            GetComponent<GameOverCheack>().Game_Going_Left();
         }
     }
 

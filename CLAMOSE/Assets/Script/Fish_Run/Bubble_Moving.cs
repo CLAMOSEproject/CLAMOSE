@@ -8,32 +8,23 @@ public class Bubble_Moving : MonoBehaviour
     Vector3 up_Speed;
     float x_Speed;
     //画面中心を確認するためのカメラ
-    //public GameObject camera;
+    public GameObject background;
     //生成されてからの時間
     int time_Count;
     //カメラとの相対位置
     float to_Camera_X;
-
-
-    //画面外に出たら消す
-    private void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
-    }
-
-    // Use this for initialization
-    void Start ()
+    
+    public void Set_X(float x)
     {
         //画面サイズ
         float screen_Wide, screen_Hight;
         screen_Wide = 60.0f;
         screen_Hight = 20.0f;
         //X座標をカメラを中心にランダム出現
-        Vector3 start_Pos = Camera.current.transform.position;
+        Vector3 start_Pos = new Vector3(x,0,28);
         to_Camera_X = Random.Range(-screen_Wide / 2.0f, screen_Wide / 2.0f);
-        start_Pos.x += to_Camera_X;
-        start_Pos.y -= screen_Hight / 2.0f;
-        start_Pos.z = 28;
+        //start_Pos.x += to_Camera_X;
+        //start_Pos.y -= screen_Hight / 2.0f;        
 
         //泡の位置初期化
         transform.position = start_Pos;
@@ -44,6 +35,12 @@ public class Bubble_Moving : MonoBehaviour
 
         //カウント初期化
         time_Count = 0;
+    }
+
+    // Use this for initialization
+    void Start ()
+    {
+        
 	}
 	
 	// Update is called once per frame
@@ -54,5 +51,10 @@ public class Bubble_Moving : MonoBehaviour
         this.transform.position += up_Speed;
         //カウント上昇
         time_Count++;
+
+        if(time_Count > 300)
+        {
+            Destroy(this.gameObject);
+        }
 	}
 }
