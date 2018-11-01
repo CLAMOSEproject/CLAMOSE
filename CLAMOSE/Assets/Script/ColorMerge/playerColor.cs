@@ -12,6 +12,8 @@ public class playerColor : MonoBehaviour {
     public int playerNumber = 0;
     public MonitaSysmtem system;
 
+    public GameObject inputSystem;
+
 	// Use this for initialization
 	void Start () {
         color.r = 0.0f;
@@ -29,8 +31,10 @@ public class playerColor : MonoBehaviour {
         {
             switch (playerNumber)
             {
-                case 1: Push(); break;
-                case 2: Push2(); break;
+                //case 1: Push(); break;
+                //case 2: Push2(); break;
+                case 1: PushButton1(); break;
+                case 2: PushButton2(); break;
             }
             RestrictionPush();
            
@@ -40,7 +44,10 @@ public class playerColor : MonoBehaviour {
 
         }
         this.GetComponent<SpriteRenderer>().color = new Color(
-         color.r, color.g, color.b);     
+         color.r, color.g, color.b);
+
+        //入力更新
+        inputSystem.GetComponent<Controller_Input>().Buttons_Check();
     }
 
     void Push()
@@ -124,5 +131,34 @@ public class playerColor : MonoBehaviour {
         pushCount.x = 0;
         pushCount.y = 0;
         pushCount.z = 0;
+    }
+
+
+    //ボタンデバイスの入力
+    void PushButton1()
+    {
+        pushCount.x = inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PR", 0);
+        pushCount.y = inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PR", 1);
+        pushCount.z = inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PR", 2);
+
+        if (inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PR", 3) != 0)
+        {
+            pushCount.x = 0;
+            pushCount.y = 0;
+            pushCount.z = 0;
+        }
+    }
+    void PushButton2()
+    {
+        pushCount.x = inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PL", 0);
+        pushCount.y = inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PL", 1);
+        pushCount.z = inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PL", 2);
+
+        if (inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PL", 3) != 0)
+        {
+            pushCount.x = 0;
+            pushCount.y = 0;
+            pushCount.z = 0;
+        }
     }
 }

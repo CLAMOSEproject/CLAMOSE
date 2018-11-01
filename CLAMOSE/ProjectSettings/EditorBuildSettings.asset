@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scene/ColorMerge/ColorMerge.unity
+    guid: 52a3a2a704d717845a0b57326c0c187d
+  - enabled: 1
     path: Assets/Scene/ChargeMachine/ChargeMachine.unity
     guid: 66ea8a331905c7941a2bdc955ce0cab5
