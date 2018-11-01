@@ -220,4 +220,10 @@ public class MonitaSysmtem : MonoBehaviour {
     {
         return state == State.Result;
     }
+
+    //終了状態かのチェック
+    public bool IsEndOn()
+    {
+        return state == State.End;
+    }
 }
