@@ -20,7 +20,8 @@ public class MonitaSysmtem : MonoBehaviour {
     int playCnt = 0;
     State state;
     int stateCnt = 0;
-  
+    float monitaCreatePos = 3.3f;
+
     //public:
     public int designatePushNum = 3;
     public monitaData data;
@@ -29,6 +30,9 @@ public class MonitaSysmtem : MonoBehaviour {
     public GameObject prefab;
     public GameObject nextGameText;
     public GameObject endText;
+
+    //audio
+    public AudioSource fireSound;
 
     // Use this for initialization
     void Start()
@@ -68,7 +72,7 @@ public class MonitaSysmtem : MonoBehaviour {
         //色の格納
         SetMonitaColor();
         //色オブジェクトの生成
-        GameObject obj = Instantiate(prefab, new Vector3(0, 2.9f, 0), Quaternion.identity);
+        GameObject obj = Instantiate(prefab, new Vector3(0, monitaCreatePos, 0), Quaternion.identity);
         //ここで、設定した色情報を取得する
         obj.GetComponent<colorSelect>().SetColorData(colorData);
     }
@@ -157,7 +161,7 @@ public class MonitaSysmtem : MonoBehaviour {
                 data.SetColorData(new Vector3(0, 0, 0));
                 if(stateCnt == 60)
                 {
-                    GameObject obj = Instantiate(nextGameText, transform.position, Quaternion.identity);
+                    GameObject obj = Instantiate(nextGameText, new Vector3(0,monitaCreatePos,0), Quaternion.identity);
                     obj.AddComponent<KillEntity>().SetLimitTime(1);
                 }
                 break;

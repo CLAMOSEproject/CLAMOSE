@@ -11,19 +11,27 @@ public class CountDown : MonoBehaviour {
     float totalTime;
     bool isCnt = false;
 
+    //audio
+    public AudioSource cntSound;
 	// Use this for initialization
 	void Start () {
         totalTime = maxTime;
+        cntSound = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (!isCnt) { return; }
 
+        if(totalTime == maxTime)
+        {
+            cntSound.PlayOneShot(cntSound.clip);
+        }
         totalTime -= Time.deltaTime;
         cntTime = (int)totalTime;
-       
-        if(cntTime == -2)
+
+      
+        if (cntTime == -2)
         {
             Destroy(this.gameObject);
         }
