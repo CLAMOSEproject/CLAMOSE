@@ -14,7 +14,7 @@ public class Controller_Input : MonoBehaviour
     public string players_Name;
 
     //KeyDownと同じくするために
-    bool Head_Switch_Down(int but_Num)
+    public bool Head_Switch_Down(int but_Num)
     {
         bool rtv = false;
         switch (but_Num)
