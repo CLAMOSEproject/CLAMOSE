@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class User : MonoBehaviour {
-
+public class User : MonoBehaviour
+{
     public enum Player
     {
         Player1 = 0,
@@ -12,12 +12,12 @@ public class User : MonoBehaviour {
 
     public Player player;
 
-    private enum WinorLos
+    public enum WinorLos
     {
         Non  = 0,
         Draw = 1,
         Win  = 2,
-        Los  = 4
+        Los  = 3
     };
 
     WinorLos winorLos;
@@ -38,18 +38,20 @@ public class User : MonoBehaviour {
         return this.player;
     }
 
+
+
     public string getWinorLosName()
     {
         return this.winorLos.ToString();
     }
 
-    public void SetWinorLos(short winorLos)
+    public WinorLos getWinorLos()
     {
-        if(winorLos < 0)
-        {
-            return;
-        }
-        this.winorLos = (WinorLos)winorLos;
-        Debug.Log(this.gameObject.name + "  " + this.winorLos.ToString());
+        return this.winorLos;
+    }
+
+    public void setMatchDecision(WinorLos winorLos)
+    {
+        this.winorLos = winorLos;
     }
 }
