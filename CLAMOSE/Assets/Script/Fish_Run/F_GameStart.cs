@@ -34,7 +34,7 @@ public class F_GameStart : MonoBehaviour {
             //右プレイヤは小さい魚            
             PR.transform.SetParent(Instantiate(sfr).transform);
             //ゴール生成
-            Vector3 goal_Pos = new Vector3(3800, 0, 20);
+            Vector3 goal_Pos = new Vector3(3800, 0, 60);
             //Instantiate(Goal, goal_Pos, Quaternion.identity);
 
             Goal.transform.position = goal_Pos;
@@ -53,7 +53,7 @@ public class F_GameStart : MonoBehaviour {
             PR.transform.SetParent(Instantiate(bfl).transform);
 
             //ゴール生成
-            Vector3 goal_Pos = new Vector3(-3800, 0, 20);
+            Vector3 goal_Pos = new Vector3(-3800, 0, 60);
             //Instantiate(Goal,goal_Pos,Quaternion.identity);
             Goal.transform.position = goal_Pos;
 
