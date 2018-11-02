@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 14fa58e319ebc6e4d94cec7d0a854a82
+timeCreated: 1541130407
+licenseType: Pro
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: FZGonta-kana
+  fontNames:
+  - FZGonta-kana
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
