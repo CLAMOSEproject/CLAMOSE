@@ -54,21 +54,23 @@ public class MonitaSysmtem : MonoBehaviour {
     //色の生成
     void CreateColor()
     {
-        Color randColor;
         //色の決定
-        randColor.r = Random.Range(designatePushNum, 10);
-        randColor.g = Random.Range(designatePushNum, 10);
-        randColor.b = Random.Range(designatePushNum, 10);
-        if (randColor.r + randColor.g >= 10)
+        colorData.x = Random.Range(designatePushNum, 10);
+        colorData.y = Random.Range(designatePushNum, 10);
+        colorData.z = Random.Range(designatePushNum, 10);
+        if (colorData.x + colorData.y >= 10)
         {
-            //randColor.r -= Random.Range(designatePushNum, (int)randColor.r - 1);
-            //randColor.g -= Random.Range(designatePushNum, (int)randColor.g - 1);
+            if(colorData.x > colorData.y)
+            {
+                colorData.x -= colorData.y;
+            }
         }
-        colorData.x = 0;
-        colorData.y = 8;
-        colorData.z = 0;
-        //色をVectorにする
-        //colorData = new Vector3(randColor.r, randColor.g, randColor.b);
+        if(colorData.x <= -1 || colorData.y <= -1 || colorData.z <= -1)
+        {
+            colorData.x = 5;
+            colorData.y = 3;
+            colorData.z = 7;
+        }
         //色の格納
         SetMonitaColor();
         //色オブジェクトの生成

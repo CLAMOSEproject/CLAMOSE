@@ -17,42 +17,30 @@ public class Controller_Input : MonoBehaviour
     {
         if(name == "PL")
         {
-            if(Head_Switch_Down(0))
+            if(Head_Switch_Down(but_Num))
             {
                 return true;
-            }
-            if (Head_Switch_Down(1))
-            {
-                return true;
-            }
-            if (Head_Switch_Down(2))
-            {
-                return true;
-            }
-            if (Head_Switch_Down(3))
-            {
-                return true;
-            }
+            }            
         }
 
         else if(name == "PR")
         {
-            if (Input.GetKeyDown(KeyCode.JoystickButton0))
+            if (Input.GetKeyDown(KeyCode.JoystickButton0) && but_Num == 0)
             {
                 return true;
                 //Debug.Log("check");
             }
-            if (Input.GetKeyDown(KeyCode.JoystickButton1))
+            else if (Input.GetKeyDown(KeyCode.JoystickButton1) && but_Num == 1)
             {
                 return true;
                 //Debug.Log("check");
             }
-            if (Input.GetKeyDown(KeyCode.JoystickButton2))
+            else if (Input.GetKeyDown(KeyCode.JoystickButton2) && but_Num == 2)
             {
                 return true;
                 //Debug.Log("check");
             }
-            if (Input.GetKeyDown(KeyCode.JoystickButton3))
+            else if (Input.GetKeyDown(KeyCode.JoystickButton3) && but_Num == 3)
             {
                 return true;
                 //Debug.Log("check");

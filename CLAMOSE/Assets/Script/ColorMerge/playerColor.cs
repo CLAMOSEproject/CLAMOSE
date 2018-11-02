@@ -49,10 +49,10 @@ public class playerColor : MonoBehaviour {
         {
             switch (playerNumber)
             {
-                case 1: Push(); break;
-                case 2: Push2(); break;
-                    //case 1: PushButton1(); break;
-                    //case 2: PushButton2(); break;
+                //case 1: Push(); break;
+                //case 2: Push2(); break;
+                case 1: PushButton1(); break;
+                case 2: PushButton2(); break;
             }
             RestrictionPush();
            
@@ -176,22 +176,22 @@ public class playerColor : MonoBehaviour {
     //rightPlayer
     void PushButton1()
     {
-        if (inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PR", 0) != 0)
+        if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 0))
         {
             ++pushCount.x;
             EffectPenActive((int)EffectColor.Red);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PR", 1) != 0)
+        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 1))
         {
             ++pushCount.y;
             EffectPenActive((int)EffectColor.Blue);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PR", 2) != 0)
+        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 2))
         {
             ++pushCount.z;
             EffectPenActive((int)EffectColor.Yellow);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PR", 3) != 0)
+        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 3))
         {
             ResetPushButtonCount();
         }
@@ -204,22 +204,22 @@ public class playerColor : MonoBehaviour {
     //leftPlayer
     void PushButton2()
     {
-        if(inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PL", 0) != 0)
+        if(inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 0))
         {
             ++pushCount.x;
             EffectPenActive((int)EffectColor.Red);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PL", 1) != 0)
+        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 1))
         {
             ++pushCount.y;
             EffectPenActive((int)EffectColor.Blue);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PL", 2) != 0)
+        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 2))
         {
             ++pushCount.z;
             EffectPenActive((int)EffectColor.Yellow);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Masshed_Button_One("PL", 3) != 0)
+        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 3))
         {
             ResetPushButtonCount();
         }
