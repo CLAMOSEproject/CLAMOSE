@@ -2161,7 +2161,7 @@ Prefab:
     - target: {fileID: 114548241071858648, guid: a53de0e188a01cc47962ec3ea5adb26f,
         type: 2}
       propertyPath: toWinmaintenancetimeLimit
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4576939700497066, guid: a53de0e188a01cc47962ec3ea5adb26f, type: 2}
       propertyPath: m_RootOrder

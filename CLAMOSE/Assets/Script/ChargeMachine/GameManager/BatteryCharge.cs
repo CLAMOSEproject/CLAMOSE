@@ -13,9 +13,9 @@ public class BatteryCharge : MonoBehaviour
     public int chargeMagnification;
 
     //バッテリーの減算量
-    private float keyUpCount;
+    private float timebySubtractbattery;
     //何もボタン押していないバッテリーの減算率
-    public float keyupbatteryRate;
+    public float  keyupbatteryRate;
 
     //オーバーチャージ中
 
@@ -45,7 +45,7 @@ public class BatteryCharge : MonoBehaviour
        
         //ボタンの入力情報
         this.buttoninputCount = 0;
-        this.keyUpCount = 0;
+        this.timebySubtractbattery = 0;
         this.nonbuttoninputCount = 0;
        
         //時間関係
@@ -110,10 +110,10 @@ public class BatteryCharge : MonoBehaviour
         }
 
         //バッテリー率の減算
-        if (this.keyUpCount >= 1.0f)
+        if (this.timebySubtractbattery >= 1.0f)
         {
-            this.buttoninputCount -= (int)this.keyUpCount * 2;
-            this.keyUpCount = 0;
+            this.buttoninputCount -= Random.Range(1,5);
+            this.timebySubtractbattery = 0;
         }
 
 
@@ -124,6 +124,7 @@ public class BatteryCharge : MonoBehaviour
                 this.BatteryChargeCount();
                 break;
             case "Adjustment":
+                this.overCharge.AdjastmentButtonCountIncrease(this.CheckButtonInputCount());
                 //if (this.KeyUP())
                 //{
                 //    //調整中のボタン判定回数にも増加させる
@@ -198,12 +199,6 @@ public class BatteryCharge : MonoBehaviour
         return buttonInputCount;
     }
 
-
-    int ButtonInputCount()
-    {
-        return 1 * this.chargeMagnification;
-    }
-
     int OverChargeDecrement()
     {
         return (int)(5 * this.chargeMagnification * 0.8f);
@@ -227,23 +222,6 @@ public class BatteryCharge : MonoBehaviour
     void CountfromRate()
     {
         this.batteryRate = this.buttoninputCount;
-    }
-
-
-
-    bool KeyUP()
-    {
-        bool keyupFlag = false;
-        switch (this.user.getPlayer().ToString())
-        {
-            case "Player1":
-                keyupFlag = Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D);
-                break;
-            case "Player2":
-                keyupFlag = Input.GetKeyUp(KeyCode.J) || Input.GetKeyUp(KeyCode.L);
-                break;
-        }
-        return keyupFlag;
     }
 
     public float getNonbuttoninputCount()
