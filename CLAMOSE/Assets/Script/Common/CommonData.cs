@@ -26,8 +26,8 @@ public class CommonData {
         {
             winCount[i] = 0;
             winState[i] = CommonState.Non;
-            gameCount = -1;
         }
+        gameCount = -1;
     }
 
     //ゲーム全体の勝ちカウントを1プラスする

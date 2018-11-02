@@ -16,6 +16,7 @@ public class GameJudge : MonoBehaviour
 
     //ゲームが終了した後の処理
     private B_Result      gameResult;
+    private bool gameflag = false;
 
 
     // Use this for initialization
@@ -46,6 +47,18 @@ public class GameJudge : MonoBehaviour
                 Debug.Log("OKR");
                 this.gameResult.ToResult(this.matchDecisionplayerRight);
             }
+            if(!gameflag)
+            {
+                if(matchDecisionplayerLeft == User.WinorLos.Win)
+                {
+                    CommonData.AddWinCount( CommonData.CommonState.Player2);
+                }
+                else
+                {
+                    CommonData.AddWinCount(CommonData.CommonState.Player1); 
+                }
+                gameflag = true;
+            }
         }
     }
 
@@ -62,10 +75,12 @@ public class GameJudge : MonoBehaviour
         if(this.matchDecisionplayerLeft == User.WinorLos.Los)
         {
             this.matchDecisionplayerRight = User.WinorLos.Win;
+            
         }
         else if(this.matchDecisionplayerRight == User.WinorLos.Los)
         {
             this.matchDecisionplayerLeft = User.WinorLos.Win;
+           
         }
     }
 }

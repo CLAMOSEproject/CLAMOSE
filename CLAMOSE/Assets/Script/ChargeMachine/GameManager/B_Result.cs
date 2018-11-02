@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class B_Result : MonoBehaviour
 {
@@ -53,9 +54,9 @@ public class B_Result : MonoBehaviour
        {
           //リザルトが終えたらもう表示しない
           this.resultRender.enabled = false;
-          
-        　//次のゲームへ
-          
+
+            //次のゲームへ
+            SceneManager.LoadScene("Result");
        } 
     }
 

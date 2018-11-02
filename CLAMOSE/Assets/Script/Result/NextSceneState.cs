@@ -21,7 +21,14 @@ public class NextSceneState : MonoBehaviour {
         sceneChangeCnt += Time.deltaTime;
         if(sceneChangeCnt >= nextSceneChangeCount)
         {
-            SceneManager.LoadSceneAsync("Movie");
+            if (CommonData.GetNowGameCnt() >= 3)
+            {
+                SceneManager.LoadScene("Last_Result");
+            }
+            else
+            {
+                SceneManager.LoadScene("Movie");
+            }
         }
 	}
 }

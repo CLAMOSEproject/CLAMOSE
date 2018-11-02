@@ -124,12 +124,7 @@ public class BatteryCharge : MonoBehaviour
                 this.BatteryChargeCount();
                 break;
             case "Adjustment":
-                //if (this.KeyUP())
-                //{
-                //    //調整中のボタン判定回数にも増加させる
-                //    this.overCharge.AdjastmentButtonCountIncrease(this.ButtonInputCount());
-                //    this.keyUpCount += Time.deltaTime + 0.3f;
-                //}
+                this.BatteryChargeCount();
                 break;
             case "OverChargeCount":
                 for(int i = 0; i < 4;++i)
@@ -161,6 +156,7 @@ public class BatteryCharge : MonoBehaviour
 
         //チャージカウンタを%変換
         this.CountfromRate();
+        this.padController.Buttons_Check();
     }
 
     //ボタンの判定
@@ -179,7 +175,6 @@ public class BatteryCharge : MonoBehaviour
     //バッテリーの充電を行います
     void BatteryChargeCount()
     {
-        this.padController.Buttons_Check();
         this.buttoninputCount = this.CheckButtonInputCount();
     }
 

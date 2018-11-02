@@ -57,15 +57,13 @@ public class OverCharge : MonoBehaviour
                 break;
             case State.Adjustment:
                 //指定範囲のボタンを回数を超えた
-                if (this.isAdjastmentButtonLimit() && !this.Check())
+                if (!this.Check())
                 {
-                    this.adjastmentbuttonLimitCount = 0;
                     chengeState = State.OverChargeCount;
                 }
-                Debug.Log("指定範囲中" + this.adjastmentbuttonLimitCount);
                 break;
             case State.OverChargeCount:
-                if (!this.Check() && this.batteryChargeRate.getNonbuttoninputCount() >= 4.0f)
+                if (!this.Check())
                 {
                     chengeState = State.Normal;
                 }
