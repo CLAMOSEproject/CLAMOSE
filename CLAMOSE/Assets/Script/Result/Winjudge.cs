@@ -9,14 +9,21 @@ public class Winjudge : MonoBehaviour {
     public Sprite winSprite;
     public Sprite loseSprite;
     public Sprite drawSprite;
-
+    //Image
     public GameObject leftImage;
     public GameObject rightImage;
-
+    //Text
     public Text leftText;
     public Text rightText;
+    //Audio
+    AudioSource winSound;
+    AudioSource drawSound;
 	// Use this for initialization
 	void Start () {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+        winSound = sounds[0];
+        drawSound = sounds[1];
+        
         if (CommonData.CheckWinState(CommonData.CommonState.Player1, CommonData.GetNowGameCnt()))
         {
             //左が負けで、右が勝ち
@@ -28,6 +35,7 @@ public class Winjudge : MonoBehaviour {
             rightImage.GetComponent<Image>().color = Color.red;
             rightText.text = "Win";
             rightText.color = Color.blue;
+            winSound.PlayOneShot(winSound.clip);
         }
         else if (CommonData.CheckWinState(CommonData.CommonState.Player1, CommonData.GetNowGameCnt()))
         {
@@ -40,6 +48,7 @@ public class Winjudge : MonoBehaviour {
             rightImage.GetComponent<Image>().color = Color.blue;
             rightText.text = "Lose";
             rightText.color = Color.red;
+            winSound.PlayOneShot(winSound.clip);
         }
         else if (CommonData.CheckWinState(CommonData.CommonState.Player1, CommonData.GetNowGameCnt()))
         {
@@ -52,6 +61,7 @@ public class Winjudge : MonoBehaviour {
             rightImage.GetComponent<Image>().color = Color.green;
             rightText.text = "Draw";
             rightText.color = Color.black;
+            drawSound.PlayOneShot(drawSound.clip);
         }
     }
 	
