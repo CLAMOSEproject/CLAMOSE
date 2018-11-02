@@ -53,7 +53,6 @@ public class judgeColor : MonoBehaviour {
             Debug.Log("プレイヤー2の勝利");
             Instantiate(correctPrefab, new Vector3(-3.6f, -2.4f, 0), Quaternion.identity);
         }
-        Debug.Log(player1WinCount);
 	}
 
     //色を取得します

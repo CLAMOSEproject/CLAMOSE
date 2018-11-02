@@ -49,10 +49,10 @@ public class playerColor : MonoBehaviour {
         {
             switch (playerNumber)
             {
-                case 1: Push(); break;
-                case 2: Push2(); break;
-                //case 1: PushButton1(); break;
-                //case 2: PushButton2(); break;
+                //case 1: Push(); break;
+                //case 2: Push2(); break;
+                case 1: PushButton1(); break;
+                case 2: PushButton2(); break;
             }
             RestrictionPush();
 
