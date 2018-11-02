@@ -120,38 +120,33 @@ public class BatteryCharge : MonoBehaviour
         switch (this.overCharge.getStateName())
         {
             case "Normal":
-                this.padController.Buttons_Check();
-                for(int i = 1; i <= 3;++i)
-                {
-                    this.buttoninputCount += this.padController.Get_Masshed_Button_One("PR", 1);
-                }
-                //キーボード操作が離れているとき
-                if (this.KeyUP())
-                {
-                    this.keyUpCount += Time.deltaTime + 0.1f;
-                }
+                //ボタンの入力判定
+                this.BatteryChargeCount();
                 break;
             case "Adjustment":
-                if (this.KeyUP())
-                {
-                    //調整中のボタン判定回数にも増加させる
-                    this.overCharge.AdjastmentButtonCountIncrease(this.ButtonInputCount());
-                    this.keyUpCount += Time.deltaTime + 0.3f;
-                }
+                //if (this.KeyUP())
+                //{
+                //    //調整中のボタン判定回数にも増加させる
+                //    this.overCharge.AdjastmentButtonCountIncrease(this.ButtonInputCount());
+                //    this.keyUpCount += Time.deltaTime + 0.3f;
+                //}
                 break;
             case "OverChargeCount":
+                for(int i = 0; i < 4;++i)
+                {
+                    if (this.padController.Head_Switch_Down(i))
+                    {
+                        this.buttoninputCount = this.CheckButtonInputCount();
+                        this.overchargeButtondownCount += 1;
+                    }
+                    else
+                    {
+                        this.nonbuttoninputCount += Time.deltaTime;
+                    }
+                }
                 //充電機能
-                if (this.ButtonInputCheck())
-                {
-                    this.buttoninputCount += this.ButtonInputCount();
-                    this.overchargeButtondownCount += 1;
-                    Debug.Log("オーバーチャージ中に" + this.overchargeButtondownCount + "回加算されている");
-                }
+                Debug.Log("オーバーチャージ中に" + this.overchargeButtondownCount + "回加算されている");
                 //キーボード離れたときのカウンタ
-                else
-                {
-                    this.nonbuttoninputCount += Time.deltaTime;
-                }
                 if (this.nonbuttoninputCount >= 4.0f)
                 {
                     this.buttoninputCount -= this.OverChargeDecrement();
@@ -180,6 +175,29 @@ public class BatteryCharge : MonoBehaviour
         }
         return false;
     }
+
+    //バッテリーの充電を行います
+    void BatteryChargeCount()
+    {
+        this.padController.Buttons_Check();
+        this.buttoninputCount = this.CheckButtonInputCount();
+    }
+
+    //ボタン判定でカウントを増やします
+    int  CheckButtonInputCount()
+    {
+        string[] playerName = new string[2];
+        playerName[0] = "PL";
+        playerName[1] = "PR";
+
+        int buttonInputCount = 0;
+        for (int i = 0; i < 4; ++i)
+        {
+            buttonInputCount += this.padController.Get_Masshed_Button_One(playerName[(short)this.user.getPlayer()], i);
+        }
+        return buttonInputCount;
+    }
+
 
     int ButtonInputCount()
     {
