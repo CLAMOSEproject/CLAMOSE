@@ -13,6 +13,55 @@ public class Controller_Input : MonoBehaviour
     //プレイヤの名前
     public string players_Name;
 
+    public bool Get_Button_Down(string name, int but_Num)
+    {
+        if(name == "PL")
+        {
+            if(Head_Switch_Down(0))
+            {
+                return true;
+            }
+            if (Head_Switch_Down(1))
+            {
+                return true;
+            }
+            if (Head_Switch_Down(2))
+            {
+                return true;
+            }
+            if (Head_Switch_Down(3))
+            {
+                return true;
+            }
+        }
+
+        else if(name == "PR")
+        {
+            if (Input.GetKeyDown(KeyCode.JoystickButton0))
+            {
+                return true;
+                //Debug.Log("check");
+            }
+            if (Input.GetKeyDown(KeyCode.JoystickButton1))
+            {
+                return true;
+                //Debug.Log("check");
+            }
+            if (Input.GetKeyDown(KeyCode.JoystickButton2))
+            {
+                return true;
+                //Debug.Log("check");
+            }
+            if (Input.GetKeyDown(KeyCode.JoystickButton3))
+            {
+                return true;
+                //Debug.Log("check");
+            }
+        }
+
+        return false;
+    }
+
     //KeyDownと同じくするために
     public bool Head_Switch_Down(int but_Num)
     {

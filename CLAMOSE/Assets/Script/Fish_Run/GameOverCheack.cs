@@ -13,6 +13,16 @@ public class GameOverCheack : MonoBehaviour
     Collisioin_Checker checker;
     //小さい魚がどっちかを確認する変数
     string who_Is_Small;
+    //ゲームが左行きか右行きか判断するフラグ
+    bool going_Left_Flag;
+
+    public float zpos;
+
+    //左右を決めるメソッド
+    public void Game_Going_Left()
+    {
+        going_Left_Flag = true;
+    }
 
     void Get_Checker()
     {
@@ -33,7 +43,7 @@ public class GameOverCheack : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        
+        going_Left_Flag = false;
     }
 	
 	// Update is called once per frame
@@ -45,11 +55,25 @@ public class GameOverCheack : MonoBehaviour
             Get_Checker();
         }
 		//どっちが勝ったのかを判定
+        //食われた場合
         if(checker.Is_Eated())
         {
-            //右プレイヤの勝ち
-            //アニメーション用プレハブ生成
-            //Instantiate(winner_R, PR.transform.position,Quaternion.identity);
+            Vector3 winner_Pos = PR.transform.parent.position;            
+            winner_Pos.z += zpos;
+            //右行き
+            if (going_Left_Flag == false)
+            {
+                winner_Pos.x += 5;
+                //アニメーション用プレハブ生成
+                Instantiate(winner_R_Big, winner_Pos, Quaternion.identity);
+            }
+            //左行き
+            else
+            {
+                winner_Pos.x -= 5;
+                //アニメーション用プレハブ生成
+                Instantiate(winner_L_Big, winner_Pos, Quaternion.identity);
+            }
             Debug.Log("big win");
 
             //プレイヤと判定オブジェクトもアクティブfalseにする
@@ -59,9 +83,22 @@ public class GameOverCheack : MonoBehaviour
         }
         else if(checker.Is_Alived())
         {
-            //左プレイヤの勝ち
-            //アニメーション用プレハブ生成
-            //Instantiate(winner_L, PL.transform.position,Quaternion.identity);
+            Vector3 winner_Pos = PL.transform.parent.position;
+
+            winner_Pos.z += zpos;
+            //右行き
+            if (going_Left_Flag == false)
+            {
+                winner_Pos.x += 10;
+                //アニメーション用プレハブ生成
+                Instantiate(winner_R_Small, winner_Pos, Quaternion.identity);
+            }
+            //左行き
+            else
+            {
+                winner_Pos.x -= 10;
+                Instantiate(winner_L_Small, winner_Pos, Quaternion.identity);
+            }
             Debug.Log("small win");
 
             //プレイヤと判定オブジェクトもアクティブfalseにする            

@@ -7,8 +7,8 @@ public class Bubble_Moving : MonoBehaviour
     //上に浮かび上がる速度
     Vector3 up_Speed;
     float x_Speed;
-    //画面中心を確認するためのカメラ
-    public GameObject background;
+    //生成サウンド
+    public GameObject bubble_Sound;
     //生成されてからの時間
     int time_Count;
     //カメラとの相対位置
@@ -40,7 +40,8 @@ public class Bubble_Moving : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        
+        //サウンド再生
+        Instantiate(bubble_Sound).transform.SetParent(this.transform);
 	}
 	
 	// Update is called once per frame
