@@ -266,8 +266,6 @@ public class Controller_Input : MonoBehaviour
             //}
 
         }
-
-        if()
         //右のプレイヤ
 
         if (Input.GetKeyDown(KeyCode.JoystickButton0))
