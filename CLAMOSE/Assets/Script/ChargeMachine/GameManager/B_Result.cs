@@ -17,7 +17,6 @@ public class B_Result : MonoBehaviour
     private float timeMaxRenderresultText;
     private float timeCountRenderresultText;
 
-
     // Use this for initialization
     void Start()
     {

@@ -39,23 +39,21 @@ public class GameJudge : MonoBehaviour
             //どちらのPlayerの勝利結果が欲しいかを判定
             if (this.gameResult.name.Substring(6, 4) == "Left")
             {
-                Debug.Log("OKL");
                 this.gameResult.ToResult(this.matchDecisionplayerLeft);
             }
             else if(this.gameResult.name.Substring(6, 5) == "Right")
             {
-                Debug.Log("OKR");
                 this.gameResult.ToResult(this.matchDecisionplayerRight);
             }
             if(!gameflag)
             {
                 if(matchDecisionplayerLeft == User.WinorLos.Win)
                 {
-                    CommonData.AddWinCount( CommonData.CommonState.Player2);
+                    CommonData.AddWinCount( CommonData.CommonState.Player1);
                 }
                 else
                 {
-                    CommonData.AddWinCount(CommonData.CommonState.Player1); 
+                    CommonData.AddWinCount(CommonData.CommonState.Player2); 
                 }
                 gameflag = true;
             }
@@ -69,18 +67,33 @@ public class GameJudge : MonoBehaviour
 
     void ResultStateUpDate()
     {
-        this.matchDecisionplayerLeft  = this.playerLeft.getWinorLos();
-        this.matchDecisionplayerRight = this.playerRight.getWinorLos();
-
-        if(this.matchDecisionplayerLeft == User.WinorLos.Los)
+        if (this.matchDecisionplayerLeft == User.WinorLos.Non)
         {
-            this.matchDecisionplayerRight = User.WinorLos.Win;
-            
+            this.matchDecisionplayerLeft = this.playerLeft.getWinorLos();
         }
-        else if(this.matchDecisionplayerRight == User.WinorLos.Los)
+        if (this.matchDecisionplayerRight == User.WinorLos.Non)
         {
-            this.matchDecisionplayerLeft = User.WinorLos.Win;
-           
+            this.matchDecisionplayerRight = this.playerRight.getWinorLos();
+        }
+        //右プレイヤーによって決まる
+        if (this.matchDecisionplayerLeft == User.WinorLos.Non)
+        {
+            switch (this.matchDecisionplayerRight)
+            {
+                case User.WinorLos.Win: this.matchDecisionplayerLeft = User.WinorLos.Los; break;
+                case User.WinorLos.Los: this.matchDecisionplayerLeft = User.WinorLos.Win; break;
+                case User.WinorLos.Draw: this.matchDecisionplayerLeft = User.WinorLos.Draw; break;
+            }
+        }
+        if (this.matchDecisionplayerRight == User.WinorLos.Non)
+        {
+            //左プレイヤーによって決まる
+            switch (this.matchDecisionplayerLeft)
+            {
+                case User.WinorLos.Win: this.matchDecisionplayerRight = User.WinorLos.Los; break;
+                case User.WinorLos.Los: this.matchDecisionplayerRight = User.WinorLos.Win; break;
+                case User.WinorLos.Draw: this.matchDecisionplayerRight = User.WinorLos.Draw; break;
+            }
         }
     }
 }
