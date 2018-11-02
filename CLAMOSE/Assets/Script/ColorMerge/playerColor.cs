@@ -49,17 +49,18 @@ public class playerColor : MonoBehaviour {
         {
             switch (playerNumber)
             {
-                //case 1: Push(); break;
-                //case 2: Push2(); break;
-                case 1: PushButton1(); break;
-                case 2: PushButton2(); break;
+                case 1: Push(); break;
+                case 2: Push2(); break;
+                //case 1: PushButton1(); break;
+                //case 2: PushButton2(); break;
             }
             RestrictionPush();
-           
+
+            Color preColor = color;
             color.r = ((pushCount.x + pushCount.z) / 10.0f);
             color.b = (pushCount.y / 10.0f);
             color.g = (pushCount.z / 10.0f);
-
+            color = Color.Lerp(preColor, color, Time.deltaTime * 5.0f);
         }
         this.GetComponent<SpriteRenderer>().color = new Color(
          color.r, color.g, color.b);
