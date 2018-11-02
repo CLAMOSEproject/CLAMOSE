@@ -12,7 +12,7 @@ public class BatteryColor : MonoBehaviour
     private short batteryRate;              //バッテリー率を取得して格納する変数
 
     //マテリアル情報
-    private Image nowColor;
+    private SpriteRenderer nowColor;
     private Color color;
 
     //大きさの情報
@@ -22,10 +22,10 @@ public class BatteryColor : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        this.color = GetComponent<Image>().color;
-        this.nowColor = GetComponent<Image>();
+        this.color = GetComponent<SpriteRenderer>().color;
+        this.nowColor = GetComponent<SpriteRenderer>();
         this.rectTransform = GetComponent<RectTransform>();
-        this.ScaleMax_x = GetComponent<RectTransform>().sizeDelta.x;
+        this.ScaleMax_x = GetComponent<RectTransform>().transform.localScale.x;
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class BatteryColor : MonoBehaviour
         this.batteryRate = (short)this.batteryCharge.getbatteryRate();
         this.color = this.GageCheck();
         this.nowColor.color = this.color;
-        this.rectTransform.sizeDelta = new Vector2(this.GageScale(), this.rectTransform.sizeDelta.y);
+        this.rectTransform.transform.localScale = new Vector2(this.GageScale(), this.rectTransform.localScale.y);
     }
 
     Color GageCheck()

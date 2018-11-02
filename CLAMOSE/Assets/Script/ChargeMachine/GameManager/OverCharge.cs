@@ -97,6 +97,7 @@ public class OverCharge : MonoBehaviour
             case State.OverCharge:
                 Debug.Log("オーバーチャージ状態");
                 //エフェクトへ続く
+
                 break;
         }
 

@@ -63,7 +63,7 @@ public class Controller_Input : MonoBehaviour
     }
 
     //KeyDownと同じくするために
-    bool Head_Switch_Down(int but_Num)
+    public bool Head_Switch_Down(int but_Num)
     {
         bool rtv = false;
         switch (but_Num)
@@ -125,7 +125,7 @@ public class Controller_Input : MonoBehaviour
 
         return rtv;
     }
-    void Buttons_Check()
+    public void Buttons_Check()
     {
         //左のプレイヤ        
 
@@ -276,7 +276,6 @@ public class Controller_Input : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        //フレームごとにボタンチェック
-        this.Buttons_Check();        
+            
 	}
 }

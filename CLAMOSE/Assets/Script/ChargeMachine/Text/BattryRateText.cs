@@ -10,14 +10,14 @@ public class BattryRateText : MonoBehaviour {
     public int magicNumber;
 
     private Sprite    Mathsprite;
-    private Image     image;
+    private SpriteRenderer     spriteRenderer;
 
     public  bool      percent;
     // Use this for initialization
     void Start ()
     {
-        this.Mathsprite = GetComponent<Image>().sprite;
-        this.image = GetComponent<Image>();
+        this.Mathsprite = GetComponent<SpriteRenderer>().sprite;
+        this.spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -27,7 +27,7 @@ public class BattryRateText : MonoBehaviour {
         if(!this.percent)
         {
             this.Mathsprite = this.MagicNumberfromSelectMathFont();
-            this.image.sprite = this.Mathsprite;
+            this.spriteRenderer.sprite = this.Mathsprite;
         }
         else
         {
@@ -43,12 +43,12 @@ public class BattryRateText : MonoBehaviour {
         short spriteNumber = 0;
         if(this.magicNumber <= digit.Length)
         {
-            this.image.enabled = true;
+            this.spriteRenderer.enabled = true;
             spriteNumber = short.Parse(digit.Substring(digit.Length - this.magicNumber, 1));
         }
         else
         {
-            this.image.enabled = false;
+            this.spriteRenderer.enabled = false;
         }
         return this.mathFont[spriteNumber];
     }
