@@ -65,14 +65,14 @@ public class GameOverCheack : MonoBehaviour
             {
                 winner_Pos.x += 5;
                 //アニメーション用プレハブ生成
-                Instantiate(winner_R_Big, winner_Pos, Quaternion.identity);
+                Instantiate(winner_R_Big, winner_Pos, Quaternion.identity).GetComponent<Win_Control>().Set_Winner_Fish_Run(0);
             }
             //左行き
             else
             {
                 winner_Pos.x -= 5;
                 //アニメーション用プレハブ生成
-                Instantiate(winner_L_Big, winner_Pos, Quaternion.identity);
+                Instantiate(winner_L_Big, winner_Pos, Quaternion.identity).GetComponent<Win_Control>().Set_Winner_Fish_Run(1);
             }
             Debug.Log("big win");
 
@@ -91,13 +91,13 @@ public class GameOverCheack : MonoBehaviour
             {
                 winner_Pos.x += 10;
                 //アニメーション用プレハブ生成
-                Instantiate(winner_R_Small, winner_Pos, Quaternion.identity);
+                Instantiate(winner_R_Small, winner_Pos, Quaternion.identity).GetComponent<Win_Control>().Set_Winner_Fish_Run(1);
             }
             //左行き
             else
             {
                 winner_Pos.x -= 10;
-                Instantiate(winner_L_Small, winner_Pos, Quaternion.identity);
+                Instantiate(winner_L_Small, winner_Pos, Quaternion.identity).GetComponent<Win_Control>().Set_Winner_Fish_Run(0);
             }
             Debug.Log("small win");
 

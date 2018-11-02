@@ -35,10 +35,9 @@ public class Controll_Last_Result : MonoBehaviour
         who_Is_Win = new int[Game_Selector.max_Games] { -1,-1,-1 };
 
         //commonデータからもらってくる
-        //今は仮処理
         for(int i =0; i<Game_Selector.max_Games; i++)
         {
-            who_Is_Win[i] = 1;
+            who_Is_Win[i] = (int)CommonData.GetCommonState(i);
         }
 
         //全体スコア計算

@@ -15,6 +15,8 @@ public class Movie_Selector : MonoBehaviour
     public int tick;
     //タイムカウント
     int time_Count;
+    //破裂音
+    public GameObject crash;
 
     // Use this for initialization
     void Start ()
@@ -46,11 +48,19 @@ public class Movie_Selector : MonoBehaviour
                 round.SetActive(true);                
                 setumei.SetActive(false);
                 press.SetActive(false);
+                if (time_Count % tick == 0)
+                {
+                    Instantiate(crash);
+                }
                 break;
             case 2:
                 round.SetActive(false);
                 setumei.SetActive(true);
                 press.SetActive(false);
+                if (time_Count % tick == 0)
+                {
+                    Instantiate(crash);
+                }
                 break;
 
             case 3:
@@ -58,6 +68,10 @@ public class Movie_Selector : MonoBehaviour
                 setumei.SetActive(false);
                 tutorial.SetActive(true);                
                 press.SetActive(true);
+                if (time_Count % tick == 0)
+                {
+                    Instantiate(crash);
+                }
                 break;
         }
 

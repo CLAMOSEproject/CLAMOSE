@@ -55,7 +55,7 @@ public class Game_Selector : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		if(time_Count > 180)
+		if(Input.GetKeyDown(KeyCode.JoystickButton9))
         {
             SceneManager.LoadScene("Movie");
         }
