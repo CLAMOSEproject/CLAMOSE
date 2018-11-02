@@ -35,10 +35,9 @@ public class Controll_Last_Result : MonoBehaviour
         who_Is_Win = new int[Game_Selector.max_Games] { -1,-1,-1 };
 
         //commonデータからもらってくる
-        //今は仮処理
         for(int i =0; i<Game_Selector.max_Games; i++)
         {
-            who_Is_Win[i] = 1;
+            who_Is_Win[i] = (int)CommonData.GetCommonState(i);
         }
 
         //全体スコア計算
@@ -52,6 +51,25 @@ public class Controll_Last_Result : MonoBehaviour
         for (int r = 1; r <= 4; r++)
         {
             Transport_To_Object(r);
+        }
+        switch(all_Score)
+        {
+            //左勝利
+            case 0:
+            case 1:
+            case 4:
+                final_Result_Image.GetComponent<Movie_Scene_Image_Selecter>().Set_Image(0);
+                break;
+            //右勝利
+            case 2:
+            case 3:
+            case 6:
+                final_Result_Image.GetComponent<Movie_Scene_Image_Selecter>().Set_Image(1);
+                break;
+            //引分け
+            case 5:
+                final_Result_Image.GetComponent<Movie_Scene_Image_Selecter>().Set_Image(2);
+                break;
         }
 
         //送った後activeをfalseにする
@@ -128,6 +146,10 @@ public class Controll_Last_Result : MonoBehaviour
                 break;
             case 5:
                 final_Result_Image.GetComponent<Final_Image_Alpha>().Increment_Start();
+                round1.GetComponent<Controll_Score_Board>().Decrement_Start();
+                round2.GetComponent<Controll_Score_Board>().Decrement_Start();
+                round3.GetComponent<Controll_Score_Board>().Decrement_Start();
+                last.GetComponent<Controll_Score_Board>().Decrement_Start();
                 break;
         }
 

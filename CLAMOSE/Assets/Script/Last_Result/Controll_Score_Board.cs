@@ -12,11 +12,33 @@ public class Controll_Score_Board : MonoBehaviour
     //カンバスサイズ
     float canvas_X, canvas_Y;
 
+    //透明度下がりが始まるフラグ
+    bool decrement_Flag;
+    //透明度
+    float alpha;
+
     //使うイメージ
     public Sprite[] last_Result;
     public Sprite[] round1_Sprite;
     public Sprite[] round2_Sprite;
     public Sprite[] round3_Sprite;
+
+    public void Decrement_Start()
+    {
+        decrement_Flag = true;
+    }
+    //イメージに適用
+    void Set_Alpha()
+    {
+        //現在の色を取る
+        Color c = GetComponent<Image>().color;
+
+        //透明度更新
+        c.a = alpha;
+
+        //適用
+        GetComponent<Image>().color = c;
+    }
 
     //ステートを保存してもらうメソッド
     public void Set_Winner(int winner)
@@ -29,6 +51,7 @@ public class Controll_Score_Board : MonoBehaviour
         {
             win_State = winner;
         }
+        alpha = 1.0f;
     }
     //イメージ選択
     void Select_Image()
@@ -53,6 +76,8 @@ public class Controll_Score_Board : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
+        decrement_Flag = false;
+        alpha = 1.0f;
         //カンバスサイズ保存
         canvas_X = transform.parent.GetComponent<RectTransform>().rect.width;
         canvas_Y = transform.parent.GetComponent<RectTransform>().rect.height;
@@ -63,9 +88,7 @@ public class Controll_Score_Board : MonoBehaviour
         //位置更新
         Vector3 pos = new Vector3(canvas_X / 2.0f, y, 0);
 
-        transform.position = pos;
-
-        Select_Image();
+        transform.position = pos;        
     }
 
    
@@ -73,6 +96,12 @@ public class Controll_Score_Board : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-		
-	}
+        if (decrement_Flag)
+        {
+            alpha -= 0.5f;
+        }
+        Set_Alpha();
+
+        Select_Image();
+    }
 }

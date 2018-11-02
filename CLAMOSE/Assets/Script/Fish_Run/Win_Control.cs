@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Win_Control : MonoBehaviour
 {
@@ -12,9 +13,19 @@ public class Win_Control : MonoBehaviour
     //タイムカウント
     int time_Count;
 
+    //勝ち側のプレイヤ
+    int winner;
+
+    //勝ち側セット
+    public void Set_Winner_Fish_Run(int pl)
+    {
+        winner = pl;
+    }
+
 	// Use this for initialization
 	void Start ()
     {
+        winner = -1;
         //音源再生
         Instantiate(win_Sound).transform.SetParent(this.transform);
 
@@ -28,7 +39,10 @@ public class Win_Control : MonoBehaviour
 		//次のシーンを呼ぶ
         if(time_Count > tick_To_Next_Scene)
         {
-            //現在処理なし
+            //勝利者登録
+            CommonData.AddWinCount((CommonData.CommonState)winner);
+            //次のシーンを呼ぶ
+            SceneManager.LoadScene("Result");
         }
 
         //カウント上昇
