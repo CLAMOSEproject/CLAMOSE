@@ -24,7 +24,7 @@ public class Winjudge : MonoBehaviour {
         winSound = sounds[0];
         drawSound = sounds[1];
         
-        if (CommonData.CheckWinState(CommonData.CommonState.Player1, CommonData.GetNowGameCnt()))
+        if (CommonData.CheckWinState(CommonData.CommonState.Player2, CommonData.GetNowGameCnt()))
         {
             //左が負けで、右が勝ち
             leftImage.GetComponent<Image>().sprite = winSprite;
@@ -50,7 +50,7 @@ public class Winjudge : MonoBehaviour {
             rightText.color = Color.red;
             winSound.PlayOneShot(winSound.clip);
         }
-        else if (CommonData.CheckWinState(CommonData.CommonState.Player1, CommonData.GetNowGameCnt()))
+        else if (CommonData.CheckWinState(CommonData.CommonState.Draw, CommonData.GetNowGameCnt()))
         {
             //どちらも、引き分けを出す
             leftImage.GetComponent<Image>().sprite = drawSprite;

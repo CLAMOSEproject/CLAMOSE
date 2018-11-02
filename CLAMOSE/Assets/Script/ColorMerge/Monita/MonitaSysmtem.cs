@@ -181,12 +181,12 @@ public class MonitaSysmtem : MonoBehaviour {
                 if(referee.GetPlayer1WinCount() > referee.GetPlayer2WinCount())
                 {
                     //プレイヤー1の勝利
-                    CommonData.AddWinCount(CommonData.CommonState.Player1);
+                    CommonData.AddWinCount(CommonData.CommonState.Player2);
                 }
                 else if(referee.GetPlayer1WinCount() < referee.GetPlayer2WinCount())
                 {
                     //プレイヤー2の勝利
-                    CommonData.AddWinCount(CommonData.CommonState.Player2);
+                    CommonData.AddWinCount(CommonData.CommonState.Player1);
                 }
                 else
                 {

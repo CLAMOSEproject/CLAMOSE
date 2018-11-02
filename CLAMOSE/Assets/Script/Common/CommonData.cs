@@ -34,7 +34,14 @@ public class CommonData {
     //
     public static void AddWinCount(CommonState playerState)
     {
-        ++winCount[(int)playerState];
+        int cnt = 0;
+        switch(playerState)
+        {
+            case CommonState.Player1: cnt = 0; break;
+            case CommonState.Player2: cnt = 1; break;
+            case CommonState.Draw:  cnt = 2; break;
+        }
+        ++winCount[cnt];
         ++gameCount;
         winState[gameCount] = playerState;
     }

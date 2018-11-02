@@ -25,7 +25,7 @@ public class Win_Control : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        winner = -1;
+        //winner = -1;
         //音源再生
         Instantiate(win_Sound).transform.SetParent(this.transform);
 
