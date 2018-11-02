@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4413564239075068}
   - component: {fileID: 212229278392446824}
   - component: {fileID: 95225862270316450}
+  - component: {fileID: 114065002603014294}
   m_Layer: 0
   m_Name: Winner_L_Small
   m_TagString: Untagged
@@ -58,6 +59,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114065002603014294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1215921584971014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f144238dcf72d642a3b2b4b946e2a34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  win_Sound: {fileID: 1226890475615810, guid: b8e2bbeb9893543429ef277cf66b5815, type: 2}
 --- !u!212 &212229278392446824
 SpriteRenderer:
   m_ObjectHideFlags: 1

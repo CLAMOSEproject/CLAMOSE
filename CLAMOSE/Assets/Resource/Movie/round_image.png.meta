@@ -1,16 +1,12 @@
 fileFormatVersion: 2
-guid: cb01cc976651a224d85e81e67dbbb905
-timeCreated: 1540978322
+guid: 695074ca1608af64f871a7ac1737a165
+timeCreated: 1541047947
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
-    21300000: karifinal_0
-    21300002: karifinal_1
-    21300004: karifinal_2
-    21300006: karifinal_3
-    21300008: karifinal_4
-    21300010: karifinal_5
-    21300012: karifinal_6
+    21300000: round_image_0
+    21300002: round_image_1
+    21300004: round_image_2
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -107,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: karifinal_0
+      name: round_image_0
       rect:
         serializedVersion: 2
-        x: 56
-        y: 470
-        width: 150
-        height: 128
+        x: 38
+        y: 400
+        width: 800
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -121,13 +117,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: karifinal_1
+      name: round_image_1
       rect:
         serializedVersion: 2
-        x: 62
-        y: 314
-        width: 150
-        height: 128
+        x: 41
+        y: 218
+        width: 800
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,69 +131,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: karifinal_2
+      name: round_image_2
       rect:
         serializedVersion: 2
-        x: 59
-        y: 160
-        width: 150
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: karifinal_3
-      rect:
-        serializedVersion: 2
-        x: 54
-        y: 27
-        width: 150
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: karifinal_4
-      rect:
-        serializedVersion: 2
-        x: 593
-        y: 466
-        width: 150
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: karifinal_5
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 325
-        width: 150
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: karifinal_6
-      rect:
-        serializedVersion: 2
-        x: 604
-        y: 175
-        width: 150
-        height: 128
+        x: 39
+        y: 39
+        width: 800
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

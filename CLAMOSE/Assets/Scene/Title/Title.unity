@@ -263,6 +263,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pump_Time: 45
+  x_Rate: 0.75
+  y_Rate: 0.75
 --- !u!114 &1096030788
 MonoBehaviour:
   m_ObjectHideFlags: 0

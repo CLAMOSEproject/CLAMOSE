@@ -57,7 +57,7 @@ public class Game_Selector : MonoBehaviour
     {
 		if(time_Count > 180)
         {
-            SceneManager.LoadSceneAsync("Movie");
+            SceneManager.LoadScene("Movie");
         }
 
         time_Count++;
@@ -75,5 +75,11 @@ public class Game_Selector : MonoBehaviour
         }
 
         return remain_Games[index];
+    }
+
+    //今何ラウンドかを返す
+    public static int Get_Now_Round()
+    {
+        return index;
     }
 }
