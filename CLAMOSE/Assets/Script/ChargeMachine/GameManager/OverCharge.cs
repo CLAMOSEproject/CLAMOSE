@@ -65,7 +65,7 @@ public class OverCharge : MonoBehaviour
                 Debug.Log("指定範囲中" + this.adjastmentbuttonLimitCount);
                 break;
             case State.OverChargeCount:
-                if (!this.Check() && this.batteryChargeRate.getNonbuttoninputCount() >= 4.0f)
+                if (!this.Check())
                 {
                     chengeState = State.Normal;
                 }
@@ -81,8 +81,6 @@ public class OverCharge : MonoBehaviour
                     if(this.batteryChargeRate.isLimitButtonCheck())
                     {
                         chengeState = State.OverCharge;
-                        this.overchargetimeCount += 3;
-                        Debug.Log("このままだと爆発してしまいます");
                     }
                     //カウント減らし
                     this.overchargetimeCount += Time.deltaTime;

@@ -17,42 +17,35 @@ public class Controller_Input : MonoBehaviour
     {
         if(name == "PL")
         {
-            if(Head_Switch_Down(0))
+            if(Head_Switch_Down(but_Num))
             {
+                Debug.Log("check");
+                //Debug.Log(prev_Axis5 = Input.GetAxis("Axis 5"));
+                //Debug.Log(prev_Axis6 = Input.GetAxis("Axis 6"));
                 return true;
             }
-            if (Head_Switch_Down(1))
-            {
-                return true;
-            }
-            if (Head_Switch_Down(2))
-            {
-                return true;
-            }
-            if (Head_Switch_Down(3))
-            {
-                return true;
-            }
+            //Debug.Log(prev_Axis5 = Input.GetAxis("Axis 5"));
+            //Debug.Log(prev_Axis6 = Input.GetAxis("Axis 6"));
         }
 
         else if(name == "PR")
         {
-            if (Input.GetKeyDown(KeyCode.JoystickButton0))
+            if (Input.GetKeyDown(KeyCode.JoystickButton0) && but_Num == 0)
             {
                 return true;
                 //Debug.Log("check");
             }
-            if (Input.GetKeyDown(KeyCode.JoystickButton1))
+            if (Input.GetKeyDown(KeyCode.JoystickButton1) && but_Num == 1)
             {
                 return true;
                 //Debug.Log("check");
             }
-            if (Input.GetKeyDown(KeyCode.JoystickButton2))
+            if (Input.GetKeyDown(KeyCode.JoystickButton2) && but_Num == 2)
             {
                 return true;
                 //Debug.Log("check");
             }
-            if (Input.GetKeyDown(KeyCode.JoystickButton3))
+            if (Input.GetKeyDown(KeyCode.JoystickButton3) && but_Num == 3)
             {
                 return true;
                 //Debug.Log("check");
@@ -125,16 +118,18 @@ public class Controller_Input : MonoBehaviour
 
         return rtv;
     }
-    public void Buttons_Check()
+    public bool Buttons_Check()
     {
         //左のプレイヤ        
-
+        bool rtv = false;
         //左右チェック
         if (this.Head_Switch_Down(0))
         {
             this.pl_Buttons[0]++;
             this.hs_Flag[0] = true;
             this.hs_Flag[2] = false;
+
+            rtv = true;
             //Debug.Log("check");
         }
         if (this.Head_Switch_Down(2))
@@ -142,6 +137,8 @@ public class Controller_Input : MonoBehaviour
             this.pl_Buttons[2]++;
             this.hs_Flag[2] = true;
             this.hs_Flag[0] = false;
+
+            rtv = true;
             Debug.Log("check");
         }
         //上下チェック
@@ -150,6 +147,8 @@ public class Controller_Input : MonoBehaviour
             this.pl_Buttons[3]++;
             this.hs_Flag[3] = true;
             this.hs_Flag[1] = false;
+
+            rtv = true;
             //Debug.Log("check");
         }
         if (this.Head_Switch_Down(1))
@@ -157,6 +156,8 @@ public class Controller_Input : MonoBehaviour
             this.pl_Buttons[1]++;
             this.hs_Flag[1] = true;
             this.hs_Flag[3] = false;
+
+            rtv = true;
             Debug.Log("check");
         }
         Debug.Log(prev_Axis5 = Input.GetAxis("Axis 5"));
@@ -177,21 +178,25 @@ public class Controller_Input : MonoBehaviour
         {
             this.pr_Buttons[0]++;
             //Debug.Log("check");
+            rtv = true;
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton1))
         {
             this.pr_Buttons[1]++;
             //Debug.Log("check");
+            rtv = true;
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton2))
         {
             this.pr_Buttons[2]++;
             //Debug.Log("check");
+            rtv = true;
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton3))
         {
             this.pr_Buttons[3]++;
             //Debug.Log("check");
+            rtv = true;
         }
         //if(Input.GetKeyDown(KeyCode.JoystickButton0) == false && Input.GetKeyDown(KeyCode.JoystickButton0) == false && Input.GetKeyDown(KeyCode.JoystickButton1) == false && Input.GetKeyDown(KeyCode.JoystickButton2) == false && Input.GetKeyDown(KeyCode.JoystickButton3) == false)
         //{
@@ -200,8 +205,105 @@ public class Controller_Input : MonoBehaviour
         //        this.pr_Buttons[i] = 0;
         //    }
         //}
-
+        return rtv;
     }
+
+    public bool Buttons_Check(string name)
+    {
+        //左のプレイヤ        
+        bool rtv = false;
+
+        if(name == "PR")
+        {
+            //左右チェック
+            if (this.Head_Switch_Down(0))
+            {
+                this.pl_Buttons[0]++;
+                this.hs_Flag[0] = true;
+                this.hs_Flag[2] = false;
+
+                rtv = true;
+                //Debug.Log("check");
+            }
+            if (this.Head_Switch_Down(2))
+            {
+                this.pl_Buttons[2]++;
+                this.hs_Flag[2] = true;
+                this.hs_Flag[0] = false;
+
+                rtv = true;
+                Debug.Log("check");
+            }
+            //上下チェック
+            if (this.Head_Switch_Down(3))
+            {
+                this.pl_Buttons[3]++;
+                this.hs_Flag[3] = true;
+                this.hs_Flag[1] = false;
+
+                rtv = true;
+                //Debug.Log("check");
+            }
+            if (this.Head_Switch_Down(1))
+            {
+                this.pl_Buttons[1]++;
+                this.hs_Flag[1] = true;
+                this.hs_Flag[3] = false;
+
+                rtv = true;
+                Debug.Log("check");
+            }
+            Debug.Log(prev_Axis5 = Input.GetAxis("Axis 5"));
+            Debug.Log(prev_Axis6 = Input.GetAxis("Axis 6"));
+            //何も押されてないんだったら全ボタンを０にする
+            //if (Input.GetAxis("Axis 5") == 0.0f && Input.GetAxis("Axis 6") == 0.0f)
+            //{
+            //    for (int i = 0; i < 4; i++)
+            //    {
+            //        this.pl_Buttons[i] = 0;
+            //        this.hs_Flag[i] = false;
+            //    }
+            //}
+
+        }
+
+        if()
+        //右のプレイヤ
+
+        if (Input.GetKeyDown(KeyCode.JoystickButton0))
+        {
+            this.pr_Buttons[0]++;
+            //Debug.Log("check");
+            rtv = true;
+        }
+        if (Input.GetKeyDown(KeyCode.JoystickButton1))
+        {
+            this.pr_Buttons[1]++;
+            //Debug.Log("check");
+            rtv = true;
+        }
+        if (Input.GetKeyDown(KeyCode.JoystickButton2))
+        {
+            this.pr_Buttons[2]++;
+            //Debug.Log("check");
+            rtv = true;
+        }
+        if (Input.GetKeyDown(KeyCode.JoystickButton3))
+        {
+            this.pr_Buttons[3]++;
+            //Debug.Log("check");
+            rtv = true;
+        }
+        //if(Input.GetKeyDown(KeyCode.JoystickButton0) == false && Input.GetKeyDown(KeyCode.JoystickButton0) == false && Input.GetKeyDown(KeyCode.JoystickButton1) == false && Input.GetKeyDown(KeyCode.JoystickButton2) == false && Input.GetKeyDown(KeyCode.JoystickButton3) == false)
+        //{
+        //    for (int i = 0; i < 4; i++)
+        //    {
+        //        this.pr_Buttons[i] = 0;
+        //    }
+        //}
+        return rtv;
+    }
+
     //getter
     //押した回数全体をもらう
     public int Get_Masshed_Button_All(string name)

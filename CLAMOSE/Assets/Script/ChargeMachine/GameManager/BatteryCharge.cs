@@ -20,9 +20,11 @@ public class BatteryCharge : MonoBehaviour
     //オーバーチャージ中
 
     //ボタン関連
-    private float nonbuttoninputCount;            //ボタンが押されていない
     private int overchargeButtondownCount;      //ボタンが押されている
     public  int overchargeButtondownMax;        //ボタンのリミット回数
+    //左用のボタン
+    private int[] leftbuttoninput = new int[4];
+    private int leftbuttoninputTotal;
 
     //勝利判定までの関連
 
@@ -34,8 +36,8 @@ public class BatteryCharge : MonoBehaviour
     private OverCharge         overCharge;
     public  B_GameStart        gameStart;
     public  GameJudge          isGamePlaynow;
-    private Controller_Input   padController;
-
+    public  Controller_Input   padController;
+    private bool               systemCommandGamejudge;
 
     // Use this for initialization
     void Start()
@@ -46,7 +48,7 @@ public class BatteryCharge : MonoBehaviour
         //ボタンの入力情報
         this.buttoninputCount = 0;
         this.timebySubtractbattery = 0;
-        this.nonbuttoninputCount = 0;
+
        
         //時間関係
         this.overchargeButtondownCount = 0;
@@ -55,7 +57,6 @@ public class BatteryCharge : MonoBehaviour
         //その他
         this.user = GetComponent<User>();
         this.overCharge = GetComponent<OverCharge>();
-        this.padController = GetComponent<Controller_Input>();
 
         if(this.gameStart == null)
         {
@@ -64,11 +65,6 @@ public class BatteryCharge : MonoBehaviour
         if(this.isGamePlaynow == null)
         {
             Debug.Log("審判なしでゲームを開始しないで");
-        }
-
-        if(this.padController == null)
-        {
-            Debug.Log("コントローラーなしで判定");
         }
     }
 
@@ -84,17 +80,13 @@ public class BatteryCharge : MonoBehaviour
         if (!this.isGamePlaynow.isGamePlaynow())
         {
             if(this.user.getWinorLos() == User.WinorLos.Non || this.overCharge.getStateName() == "OverCharge")
-            {
+            { 
                 this.user.setMatchDecision(User.WinorLos.Los);
             }
             return;
         }
 
-        //バッテリーが充電量が負になる場合
-        if(this.batteryRate < 0)
-        {
-            this.batteryRate = 0;
-        }
+        
 
         //勝利判定
         if (this.ChargeMax())
@@ -104,7 +96,22 @@ public class BatteryCharge : MonoBehaviour
             {
                 //勝利のリザルトへ進む
                 this.user.setMatchDecision(User.WinorLos.Win);
-                return;
+
+                //ゲームシステムに勝負結果を報告している
+                if(this.systemCommandGamejudge)
+                {
+                    return;
+                }
+                if(this.user.getPlayer() == User.Player.Player1)
+                {
+                    this.systemCommandGamejudge = true;
+                    CommonData.AddWinCount(CommonData.CommonState.Player1);
+                }
+                else if(this.user.getPlayer() == User.Player.Player2)
+                {
+                    this.systemCommandGamejudge = true;
+                    CommonData.AddWinCount(CommonData.CommonState.Player2);
+                }
             }
             Debug.Log("勝負判定" + this.toWinmaintenanceTime);
         }
@@ -112,48 +119,48 @@ public class BatteryCharge : MonoBehaviour
         //バッテリー率の減算
         if (this.timebySubtractbattery >= 1.0f)
         {
-            this.buttoninputCount -= Random.Range(1,5);
             this.timebySubtractbattery = 0;
+            this.buttoninputCount -= Random.Range(1, 5);
+            //バッテリーが充電量が負になる場合
+            if (this.buttoninputCount < 0)
+            {
+                this.buttoninputCount = 0;
+            }
         }
-
+        else
+        {
+            this.timebySubtractbattery += Time.deltaTime;
+        }
 
         switch (this.overCharge.getStateName())
         {
             case "Normal":
                 //ボタンの入力判定
-                this.BatteryChargeCount();
+                {
+                    if (this.padController.Buttons_Check())
+                    {
+                        this.buttoninputCount += this.chargeMagnification;
+                    }
+                }
+
                 break;
             case "Adjustment":
-                this.overCharge.AdjastmentButtonCountIncrease(this.CheckButtonInputCount());
-                //if (this.KeyUP())
-                //{
-                //    //調整中のボタン判定回数にも増加させる
-                //    this.overCharge.AdjastmentButtonCountIncrease(this.ButtonInputCount());
-                //    this.keyUpCount += Time.deltaTime + 0.3f;
-                //}
+                if(this.padController.Buttons_Check())
+                {
+                    this.buttoninputCount += this.chargeMagnification;
+                    this.overCharge.AdjastmentButtonCountIncrease(1);
+                }
                 break;
             case "OverChargeCount":
-                for(int i = 0; i < 4;++i)
+                if(this.overchargeButtondownCount <= this.overchargeButtondownMax)
                 {
-                    if (this.padController.Head_Switch_Down(i))
+                    if(this.padController.Buttons_Check())
                     {
-                        this.buttoninputCount = this.CheckButtonInputCount();
-                        this.overchargeButtondownCount += 1;
-                    }
-                    else
-                    {
-                        this.nonbuttoninputCount += Time.deltaTime;
+                        this.overchargeButtondownCount++;
                     }
                 }
                 //充電機能
-                Debug.Log("オーバーチャージ中に" + this.overchargeButtondownCount + "回加算されている");
-                //キーボード離れたときのカウンタ
-                if (this.nonbuttoninputCount >= 4.0f)
-                {
-                    this.buttoninputCount -= this.OverChargeDecrement();
-                    this.nonbuttoninputCount = 0;
-                    Debug.Log("チャージ率を減算します" + this.batteryRate + "%");
-                }
+                Debug.Log("オーバーチャージに近づいている" + this.overchargeButtondownCount + "回加算されている");
                 break;
             case "OverCharge":
                 this.user.setMatchDecision(User.WinorLos.Los);
@@ -164,23 +171,9 @@ public class BatteryCharge : MonoBehaviour
         this.CountfromRate();
     }
 
-    //ボタンの判定
-    bool ButtonInputCheck()
-    {
-        switch (this.user.getPlayer().ToString())
-        {
-            case "Player1":
-                return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D);
-            case "Player2":
-                return Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.J);
-        }
-        return false;
-    }
-
     //バッテリーの充電を行います
     void BatteryChargeCount()
     {
-        this.padController.Buttons_Check();
         this.buttoninputCount = this.CheckButtonInputCount();
     }
 
@@ -224,12 +217,6 @@ public class BatteryCharge : MonoBehaviour
         this.batteryRate = this.buttoninputCount;
     }
 
-    public float getNonbuttoninputCount()
-    {
-        return this.nonbuttoninputCount;
-    }
-
-
     //オーバーチャージ中
     public bool isLimitButtonCheck()
     {
@@ -245,5 +232,43 @@ public class BatteryCharge : MonoBehaviour
     bool isToWin()
     {
         return this.toWinmaintenanceTime >= this.toWinmaintenancetimeLimit;
+    }
+
+    //どちらのゲームパッド操作にするのかを判定します
+    string CheckUseGamePadbutton(User.Player player)
+    {
+        switch(player)
+        {
+            case User.Player.Player1:
+                return "PL";
+            case User.Player.Player2:
+                return "PR";
+        }
+        return null;
+    }
+    bool CheckLeftPlayerButtonInput()
+    {
+        if (this.user.getPlayer() != User.Player.Player1)
+        {
+            return false;
+        }
+
+        if(this.padController.Head_Switch_Down(0))
+        {
+            return true;
+        }
+        if(this.padController.Head_Switch_Down(1))
+        {
+            return true;
+        }
+        if(this.padController.Head_Switch_Down(2))
+        {
+            return true;
+        }
+        if(this.padController.Head_Switch_Down(3))
+        {
+            return true;
+        }
+        return false;
     }
 }
