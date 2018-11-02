@@ -53,6 +53,25 @@ public class Controll_Last_Result : MonoBehaviour
         {
             Transport_To_Object(r);
         }
+        switch(all_Score)
+        {
+            //左勝利
+            case 0:
+            case 1:
+            case 4:
+                final_Result_Image.GetComponent<Movie_Scene_Image_Selecter>().Set_Image(0);
+                break;
+            //右勝利
+            case 2:
+            case 3:
+            case 6:
+                final_Result_Image.GetComponent<Movie_Scene_Image_Selecter>().Set_Image(1);
+                break;
+            //引分け
+            case 5:
+                final_Result_Image.GetComponent<Movie_Scene_Image_Selecter>().Set_Image(2);
+                break;
+        }
 
         //送った後activeをfalseにする
         round1.SetActive(false);
@@ -128,6 +147,10 @@ public class Controll_Last_Result : MonoBehaviour
                 break;
             case 5:
                 final_Result_Image.GetComponent<Final_Image_Alpha>().Increment_Start();
+                round1.GetComponent<Controll_Score_Board>().Decrement_Start();
+                round2.GetComponent<Controll_Score_Board>().Decrement_Start();
+                round3.GetComponent<Controll_Score_Board>().Decrement_Start();
+                last.GetComponent<Controll_Score_Board>().Decrement_Start();
                 break;
         }
 
