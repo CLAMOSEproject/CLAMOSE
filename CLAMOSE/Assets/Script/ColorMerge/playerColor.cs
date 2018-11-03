@@ -12,6 +12,7 @@ public class playerColor : MonoBehaviour {
     public int playerNumber = 0;
     public MonitaSysmtem system;
     public GameObject inputSystem;
+    private Controller_Input padInput;
 
     //audio
     public AudioSource cancelSound;
@@ -37,6 +38,8 @@ public class playerColor : MonoBehaviour {
         }
         //audio
         cancelSound = GetComponent<AudioSource>();
+
+        padInput = GetComponent<Controller_Input>();
     }
 	
 	// Update is called once per frame
@@ -66,7 +69,8 @@ public class playerColor : MonoBehaviour {
          color.r, color.g, color.b);
 
         //入力更新
-        inputSystem.GetComponent<Controller_Input>().Buttons_Check();
+        padInput.Buttons_Check();
+        //inputSystem.GetComponent<Controller_Input>().Buttons_Check();
     }
 
     void Push()
@@ -177,22 +181,47 @@ public class playerColor : MonoBehaviour {
     //rightPlayer
     void PushButton1()
     {
-        if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 0))
+        //if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 0))
+        //{
+        //    ++pushCount.x;
+        //    EffectPenActive((int)EffectColor.Red);
+        //}
+        //else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 1))
+        //{
+        //    ++pushCount.y;
+        //    EffectPenActive((int)EffectColor.Blue);
+        //}
+        //else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 2))
+        //{
+        //    ++pushCount.z;
+        //    EffectPenActive((int)EffectColor.Yellow);
+        //}
+        //else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 3))
+        //{
+        //    ResetPushButtonCount();
+        //}
+        //else
+        //{
+        //    EffectPenNonActive();
+        //}
+        //EffectPenTimeLimit();
+
+        if (padInput.Get_Button_Down("PR", 0))
         {
             ++pushCount.x;
             EffectPenActive((int)EffectColor.Red);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 1))
+        else if (padInput.Get_Button_Down("PR", 1))
         {
             ++pushCount.y;
             EffectPenActive((int)EffectColor.Blue);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 2))
+        else if (padInput.Get_Button_Down("PR", 2))
         {
             ++pushCount.z;
             EffectPenActive((int)EffectColor.Yellow);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PR", 3))
+        else if (padInput.Get_Button_Down("PR", 3))
         {
             ResetPushButtonCount();
         }
@@ -205,22 +234,48 @@ public class playerColor : MonoBehaviour {
     //leftPlayer
     void PushButton2()
     {
-        if(inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 0))
+        //if(inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 0))
+        //{
+        //    ++pushCount.x;
+        //    EffectPenActive((int)EffectColor.Red);
+        //}
+        //else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 1))
+        //{
+        //    ++pushCount.y;
+        //    EffectPenActive((int)EffectColor.Blue);
+        //}
+        //else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 2))
+        //{
+        //    ++pushCount.z;
+        //    EffectPenActive((int)EffectColor.Yellow);
+        //}
+        //else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 3))
+        //{
+        //    ResetPushButtonCount();
+        //}
+        //else
+        //{
+        //    EffectPenNonActive();
+        //}
+        //EffectPenTimeLimit();
+
+        
+        if (padInput.Get_Button_Down("PL", 0))
         {
             ++pushCount.x;
             EffectPenActive((int)EffectColor.Red);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 1))
+        else if (padInput.Get_Button_Down("PL", 1))
         {
             ++pushCount.y;
             EffectPenActive((int)EffectColor.Blue);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 2))
+        else if (padInput.Get_Button_Down("PL", 2))
         {
             ++pushCount.z;
             EffectPenActive((int)EffectColor.Yellow);
         }
-        else if (inputSystem.GetComponent<Controller_Input>().Get_Button_Down("PL", 3))
+        else if (padInput.Get_Button_Down("PL", 3))
         {
             ResetPushButtonCount();
         }
