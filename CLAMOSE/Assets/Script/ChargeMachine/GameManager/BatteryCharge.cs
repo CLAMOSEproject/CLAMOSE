@@ -129,14 +129,14 @@ public class BatteryCharge : MonoBehaviour
         }
         else
         {
-            this.buttoninputCount = 0; //0にしたいなら
+            //this.buttoninputCount = 0; //0にしたいなら
         }
     }
     //main:バッテリーの充電を行います
     void BatteryChargeCount()
     {
-        //this.buttoninputCount += this.CheckButtonInputCount(); //入力切替
-        this.buttoninputCount += this.KeyPushCount();
+        this.buttoninputCount += this.CheckButtonInputCount(); //入力切替
+        //this.buttoninputCount += this.KeyPushCount();
     }
     //main:Maxのチャージかどうかのチェック
     bool ChargeMax()
@@ -267,15 +267,15 @@ public class BatteryCharge : MonoBehaviour
         string[] playerName = new string[2];
         playerName[0] = "PL";
         playerName[1] = "PR";
-        int buttonInputCount = 0;
+        int inputCount = 0;
         for (int i = 0; i < 4; ++i)
         {
             if (this.padController.Get_Button_Down(playerName[(int)this.user.getPlayer()], i))
             {
-                ++buttoninputCount;
+                inputCount += this.chargeMagnification;
             }
         }
-        return buttonInputCount;
+        return inputCount;
     }
     //main:ボタン入力に対してどれくらいのカウントかを取得
     int ButtonInputCount()
@@ -290,8 +290,8 @@ public class BatteryCharge : MonoBehaviour
     //sub:全てのボタンが押されているかの判定
     bool CheckAllButtonPush()
     {
-        //return CheckButtonInputCount() == 0; //入力切替
-        return KeyPushCount() == 0;
+        return CheckButtonInputCount() == 0; //入力切替
+        //return KeyPushCount() == 0;
     }
 
     //////////////////////////////////////////////
