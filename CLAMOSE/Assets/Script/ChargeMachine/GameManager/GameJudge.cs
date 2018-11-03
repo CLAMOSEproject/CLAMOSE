@@ -16,7 +16,7 @@ public class GameJudge : MonoBehaviour
 
     //ゲームが終了した後の処理
     private B_Result      gameResult;
-    private bool gameflag = false;
+    private static bool gameflag = false;
 
 
     // Use this for initialization

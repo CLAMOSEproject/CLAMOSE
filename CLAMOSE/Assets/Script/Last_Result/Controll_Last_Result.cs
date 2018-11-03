@@ -154,7 +154,7 @@ public class Controll_Last_Result : MonoBehaviour
         }
 
         //タイトルに戻る
-        if(time_Count > 3600 || Input.GetKeyDown(KeyCode.JoystickButton9))
+        if(time_Count > 600 || Input.GetKeyDown(KeyCode.JoystickButton9))
         {
             Go_Title();
         }

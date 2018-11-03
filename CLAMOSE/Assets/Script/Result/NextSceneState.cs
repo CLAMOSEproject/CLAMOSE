@@ -21,7 +21,7 @@ public class NextSceneState : MonoBehaviour {
         sceneChangeCnt += Time.deltaTime;
         if(sceneChangeCnt >= nextSceneChangeCount)
         {
-            if (CommonData.GetNowGameCnt() >= 3)
+            if (CommonData.GetNowGameCnt() >= 2)
             {
                 SceneManager.LoadScene("Last_Result");
             }

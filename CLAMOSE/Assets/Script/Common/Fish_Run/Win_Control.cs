@@ -16,6 +16,7 @@ public class Win_Control : MonoBehaviour
     //勝ち側のプレイヤ
     int winner;
 
+    bool flag = false;
     //勝ち側セット
     public void Set_Winner_Fish_Run(int pl)
     {
@@ -39,8 +40,11 @@ public class Win_Control : MonoBehaviour
 		//次のシーンを呼ぶ
         if(time_Count > tick_To_Next_Scene)
         {
-            //勝利者登録
-            CommonData.AddWinCount((CommonData.CommonState)winner);
+            if (!flag)
+            {
+                //勝利者登録
+                CommonData.AddWinCount((CommonData.CommonState)winner);
+            }
             //次のシーンを呼ぶ
             SceneManager.LoadScene("Result");
         }
